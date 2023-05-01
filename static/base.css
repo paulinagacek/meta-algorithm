@@ -6,7 +6,8 @@
 
 :root{
     --dark-purple: #393646;
-    --middle-purple: #4F4557;
+    --middle-purple: #484362;
+    --middle-darker-purple: #413e55;
     --light-purle: #6D5D6E;
     --light-cream: #F7F2FF;
     --white: #FAF8FF;
@@ -25,8 +26,8 @@ body{
 
 side-navbar{
     width: min(400px, 30%);
-    background-color: #484362;
-    padding-inline: 32px;
+    background-color: var(--middle-purple);
+    padding-inline: 48px;
 }
 
 main-content{
@@ -52,6 +53,7 @@ nav{
 }
 
 nav a {
+    margin-block: 2px;
     padding-block: 16px;
     padding-inline: 24px;
     text-decoration: none;
@@ -62,9 +64,17 @@ nav a {
     border-radius: 16px;
 }
 
-nav a:hover{
+nav a.selected{
+    background-color: var(--middle-darker-purple);
+}
+
+nav a:hover, nav a.selected:hover{
     background-color: var(--dark-purple);
     -webkit-box-shadow: 8px 8px 24px -9px rgba(57, 54, 70, 1);
     -moz-box-shadow: 8px 8px 24px -9px rgba(57, 54, 70, 1);
     box-shadow: 8px 8px 24px -9px rgba(57, 54, 70, 1);
+}
+
+nav a:hover > nav a.selected:hover{
+    background-color: #F7F2FF;
 }
