@@ -1,7 +1,23 @@
 {% extends 'base.html' %}
 {% block  content%}
 <main>
-    <h1>This is warning page</h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem non beatae earum illum sit inventore sint molestiae corporis repellat! Quidem id unde ex neque et alias aperiam, cumque tempora deserunt.</p>
+    {% if warnings %}
+    <h1>Warnings</h1>
+        <section class="warnings-wrapper">
+            {% for warning in warnings  %}
+                <div class="warning-container">
+                    <p>{{warning.name}}</p>
+                    {% if warning.code_str != "" %}
+                        <div class="code-snippet-wrapper">
+                            <p class="code-line">{{warning.line}}</p>
+                            <pre class="code-snippet">{{warning.code_str}}</pre>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </section>
+    {% else %}
+        <h1>Congrats! There are no warnings.</h1>
+    {% endif %}
 </main>
 {% endblock content %}

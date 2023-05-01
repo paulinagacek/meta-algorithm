@@ -1,4 +1,5 @@
 from jinja2 import Environment, FileSystemLoader
+from catch_output import catch_warnigns
 import os
 
 class NavbarItem:
@@ -35,5 +36,6 @@ with open(filename, 'w') as fh:
 # warnings
 template_warnings = env.get_template('warnings.html')
 filename = os.path.join(root, 'html', 'warnings.html')
+warnings = catch_warnigns()
 with open(filename, 'w') as fh:
-    fh.write(template_warnings.render(nav_bar=get_navbar('Warnings')))
+    fh.write(template_warnings.render(nav_bar=get_navbar('Warnings'), warnings=warnings))
