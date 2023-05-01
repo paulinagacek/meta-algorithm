@@ -1,0 +1,70 @@
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --dark-purple: #393646;
+    --middle-purple: #4F4557;
+    --light-purle: #6D5D6E;
+    --light-cream: #F7F2FF;
+    --white: #FAF8FF;
+    --black: #29282e;
+
+    --main-white: var(--light-cream);
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    height: 100vh;
+}
+
+side-navbar{
+    width: min(400px, 30%);
+    background-color: #484362;
+    padding-inline: 32px;
+}
+
+main-content{
+    width: calc(100% - min(400px, 30%));
+    padding-inline: min(80px,10%);
+    background-color: var(--main-white);
+    color: var(--black);
+}
+
+side-navbar, main-content {
+    padding-block: 64px;
+}
+
+side-navbar h1 {
+    margin-bottom: 32px;
+    color: var(--main-white);
+}
+
+nav{
+    display: flex;
+    flex-flow: column;
+    color: var(--main-white);
+}
+
+nav a {
+    padding-block: 16px;
+    padding-inline: 24px;
+    text-decoration: none;
+    color: var(--main-white);
+    font-weight: 500;
+
+    width: 100%;
+    border-radius: 16px;
+}
+
+nav a:hover{
+    background-color: var(--dark-purple);
+    -webkit-box-shadow: 8px 8px 24px -9px rgba(57, 54, 70, 1);
+    -moz-box-shadow: 8px 8px 24px -9px rgba(57, 54, 70, 1);
+    box-shadow: 8px 8px 24px -9px rgba(57, 54, 70, 1);
+}

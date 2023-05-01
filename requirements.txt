@@ -1,3 +1,4 @@
 wheel
 slither-analyzer
 solc-select
+jinja2
