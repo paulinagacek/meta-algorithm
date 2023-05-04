@@ -1,23 +1,30 @@
 {% extends 'base.html' %}
-{% block  content%}
+{% block content%}
 <main>
     {% if warnings %}
-    <h1>Warnings</h1>
-        <section class="warnings-wrapper">
-            {% for warning in warnings  %}
-                <div class="warning-container">
-                    <p>{{warning.name}}</p>
-                    {% if warning.code_str != "" %}
-                        <div class="code-snippet-wrapper">
-                            <p class="code-line">{{warning.line}}</p>
-                            <pre class="code-snippet">{{warning.code_str}}</pre>
-                        </div>
-                    {% endif %}
+    <h2>Warnings</h2>
+    <section class="alerts-list-wrapper">
+        {% for warning in warnings %}
+        <div class="alert-container">
+            <div class="alert-icon-wrapper">
+                <div class="material-symbols-outlined icon">warning</div>
+            </div>
+            <div class="alert-body-wrapper">
+                <p>
+                    {{warning.name}}
+                </p>
+                {% if warning.code_str != "" %}
+                <div class="code-snippet-wrapper">
+                    <p class="code-line">{{warning.line}}</p>
+                    <pre class="code-snippet">{{warning.code_str}}</pre>
                 </div>
-            {% endfor %}
-        </section>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </section>
     {% else %}
-        <h1>Congrats! There are no warnings.</h1>
+    <h2>Congrats! There are no warnings.</h2>
     {% endif %}
 </main>
 {% endblock content %}

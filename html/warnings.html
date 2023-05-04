@@ -9,20 +9,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="/static/base.css">
     
     
 </head>
 <body>
     <side-navbar>
-        <h1>Meta code analysys</h1>
+        <h1>Meta analysis</h1>
         <nav>
             
-                <a href="index.html" >Home</a>
+                <a href="index.html" >
+                    <h3>Home</h3>
+                </a>
             
-                <a href="warnings.html" class="selected">Warnings</a>
+                <a href="warnings.html" class="selected">
+                    <h3>Warnings</h3>
+                </a>
             
-                <a href="/vulnerabilities" >Vulnerabilities</a>
+                <a href="/vulnerabilities" >
+                    <h3>Vulnerabilities</h3>
+                </a>
             
         </nav>
     </side-navbar>
@@ -30,60 +37,102 @@
         
 <main>
     
-    <h1>Warnings</h1>
-        <section class="warnings-wrapper">
-            
-                <div class="warning-container">
-                    <p>SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.</p>
-                    
+    <h2>Warnings</h2>
+    <section class="alerts-list-wrapper">
+        
+        <div class="alert-container">
+            <div class="alert-icon-wrapper">
+                <div class="material-symbols-outlined icon">warning</div>
+            </div>
+            <div class="alert-body-wrapper">
+                <p>
+                    SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+                </p>
+                
+            </div>
+        </div>
+        
+        <div class="alert-container">
+            <div class="alert-icon-wrapper">
+                <div class="material-symbols-outlined icon">warning</div>
+            </div>
+            <div class="alert-body-wrapper">
+                <p>
+                    Source file does not specify required compiler version! Consider adding "pragma solidity ^0.8.19;"
+                </p>
+                
+            </div>
+        </div>
+        
+        <div class="alert-container">
+            <div class="alert-icon-wrapper">
+                <div class="material-symbols-outlined icon">warning</div>
+            </div>
+            <div class="alert-body-wrapper">
+                <p>
+                    Unused local variable.
+                </p>
+                
+                <div class="code-snippet-wrapper">
+                    <p class="code-line">14</p>
+                    <pre class="code-snippet">     uint c;</pre>
                 </div>
-            
-                <div class="warning-container">
-                    <p>Source file does not specify required compiler version! Consider adding "pragma solidity ^0.8.19;"</p>
-                    
+                
+            </div>
+        </div>
+        
+        <div class="alert-container">
+            <div class="alert-icon-wrapper">
+                <div class="material-symbols-outlined icon">warning</div>
+            </div>
+            <div class="alert-body-wrapper">
+                <p>
+                    Function state mutability can be restricted to pure
+                </p>
+                
+                <div class="code-snippet-wrapper">
+                    <p class="code-line">1</p>
+                    <pre class="code-snippet"> function protected(uint a, uint b) returns(uint){</pre>
                 </div>
-            
-                <div class="warning-container">
-                    <p>Unused local variable.</p>
-                    
-                        <div class="code-snippet-wrapper">
-                            <p class="code-line">14</p>
-                            <pre class="code-snippet">     uint c;</pre>
-                        </div>
-                    
+                
+            </div>
+        </div>
+        
+        <div class="alert-container">
+            <div class="alert-icon-wrapper">
+                <div class="material-symbols-outlined icon">warning</div>
+            </div>
+            <div class="alert-body-wrapper">
+                <p>
+                    Function state mutability can be restricted to pure
+                </p>
+                
+                <div class="code-snippet-wrapper">
+                    <p class="code-line">5</p>
+                    <pre class="code-snippet"> function not_protected_asm(uint a, uint b) returns(uint){</pre>
                 </div>
-            
-                <div class="warning-container">
-                    <p>Function state mutability can be restricted to pure</p>
-                    
-                        <div class="code-snippet-wrapper">
-                            <p class="code-line">1</p>
-                            <pre class="code-snippet"> function protected(uint a, uint b) returns(uint){</pre>
-                        </div>
-                    
+                
+            </div>
+        </div>
+        
+        <div class="alert-container">
+            <div class="alert-icon-wrapper">
+                <div class="material-symbols-outlined icon">warning</div>
+            </div>
+            <div class="alert-body-wrapper">
+                <p>
+                    Function state mutability can be restricted to pure
+                </p>
+                
+                <div class="code-snippet-wrapper">
+                    <p class="code-line">13</p>
+                    <pre class="code-snippet"> function not_protected_unchecked(uint a, uint b) returns(uint){</pre>
                 </div>
-            
-                <div class="warning-container">
-                    <p>Function state mutability can be restricted to pure</p>
-                    
-                        <div class="code-snippet-wrapper">
-                            <p class="code-line">5</p>
-                            <pre class="code-snippet"> function not_protected_asm(uint a, uint b) returns(uint){</pre>
-                        </div>
-                    
-                </div>
-            
-                <div class="warning-container">
-                    <p>Function state mutability can be restricted to pure</p>
-                    
-                        <div class="code-snippet-wrapper">
-                            <p class="code-line">13</p>
-                            <pre class="code-snippet"> function not_protected_unchecked(uint a, uint b) returns(uint){</pre>
-                        </div>
-                    
-                </div>
-            
-        </section>
+                
+            </div>
+        </div>
+        
+    </section>
     
 </main>
 
