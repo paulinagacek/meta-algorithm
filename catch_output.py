@@ -15,11 +15,12 @@ class Warning:
 
 
 def get_warnings(warning_str: str):
+    print('output:\n', warning_str, '\n\n----')
     warning_str = warning_str.replace('\n\n\n\n', '\n').replace('\n\n', '\n')
     warning_str = warning_str.split("INFO:Detectors:")[0]
     warnings = warning_str.split("Warning:")
     file_name = warnings[0].replace("Compilation warnings/errors on ", "").replace(":", "")
-    print("file name:", file_name)
+
     out = []
     for w in warnings[1:]:
         lines = w.split('\n')
@@ -35,13 +36,11 @@ def get_warnings(warning_str: str):
             code_str = re.sub('.*\|', '', lines[3])
 
         out.append(Warning(name=name, line=line, code_str=code_str))
-    print(out)
     return out
 
 def catch_warnigns():
     root = os.path.dirname(os.path.abspath(__file__))
-    print("root:", root)
-    cmd = ('slither', '.\\example_contracts\\test_arithmetic.sol')
+    cmd = ('slither', '.\\example_contracts\\lock.sol')
     p = subprocess.run(cmd, capture_output=True, text=True)
     return get_warnings(p.stderr)
 

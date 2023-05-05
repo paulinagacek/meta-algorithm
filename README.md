@@ -1,4 +1,4 @@
-### Set up
+## Set up
 1. Requirements
 - python 3.8+
 
@@ -14,3 +14,10 @@ pip install -r ./requirements.txt
 solc-select install 0.8.19
 solc-select use 0.8.19
 ```
+
+## How to run it
+
+1. Run generate_template.py:
+    ```
+    python .\generate_templates.py
+    ```

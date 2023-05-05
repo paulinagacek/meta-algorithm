@@ -1,7 +1,28 @@
 {% extends 'base.html' %}
-{% block  content%}
+{% block content%}
 <main>
-    <h1>This is home page</h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem non beatae earum illum sit inventore sint molestiae corporis repellat! Quidem id unde ex neque et alias aperiam, cumque tempora deserunt.</p>
+    <h2>Why do we need meta analysis?</h2>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem
+        non beatae earum illum sit inventore sint molestiae corporis repellat!
+        Quidem id unde ex neque et alias aperiam, cumque tempora deserunt.
+    </p>
+    <h2>What is Code Analysis?</h2>
+    <p>
+        Code analysis examines software code to identify potential problems or
+        errors, verify that it adheres to coding standards, and ensure that it
+        is high-quality. Code analysis can be performed either statically by
+        examining the code without executing it or dynamically by executing it
+        and analyzing its behavior while running.
+    </p>
+    <h2>Tools used in meta analysis</h2>
+    <h3>Slither</h3>
+    <p>Slither is an open-source smart contract analysis tool that statically
+        analyses the code. Slither takes Solidity Abstract Syntax Tree(AST)
+        developed by Solidity Compiler from the source code as input. Slither
+        tool consists of a set of detectors to detect the vulnerabilities in the
+        contract.
+    </p>
+    <h3>Echidna</h3>
+    <p>Echidna is designed for fuzzing/property-based testing and developed in Haskell programming language. Fuzzing is a technique that includes generating random inputs and makes it easy to automatically generate tests to detect violations in assertions and custom properties.</p>
 </main>
 {% endblock content %}
