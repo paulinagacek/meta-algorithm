@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content%}
+<main>
+    {% if vurnabilities %}
+    <h2>Vurnabilities</h2>
+    <section class="alerts-list-wrapper">
+        {% for vur in vurnabilities %}
+        <div class="alert-container">
+            <div class="alert-icon-wrapper">
+                <div class="material-symbols-outlined icon">bug_report
+                </div>
+            </div>
+            <div class="alert-body-wrapper">
+                <pre>{{vur}}</pre>
+            </div>
+            <div class="alert-bin-wrapper">
+                <label class="material-symbols-outlined"><input type="checkbox" class="hidden"/>close</label>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+    {% else %}
+    <h2>Congrats! There are no vurnabilities.</h2>
+    {% endif %}
+</main>
+{% endblock content %}

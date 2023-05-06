@@ -15,9 +15,8 @@ class Warning:
 
 
 def get_warnings(warning_str: str):
-    print('output:\n', warning_str, '\n\n----')
     warning_str = warning_str.replace('\n\n\n\n', '\n').replace('\n\n', '\n')
-    warning_str = warning_str.split("INFO:Detectors:")[0]
+
     warnings = warning_str.split("Warning:")
     file_name = warnings[0].replace("Compilation warnings/errors on ", "").replace(":", "")
 
@@ -38,11 +37,38 @@ def get_warnings(warning_str: str):
         out.append(Warning(name=name, line=line, code_str=code_str))
     return out
 
-def catch_warnigns():
+def extract_warning_str(entire_log: str) -> str:
+    '''
+    Return string with warning logs from entire log.
+    '''
+
+    if re.search('Compilation warnings/errors on', entire_log) and re.search('Warning:', entire_log):
+        if re.search('INFO:Detectors:', entire_log):
+            return entire_log.split("INFO:Detectors:", 1)[0]
+        else:
+            return entire_log
+    else:
+        return ''
+
+def extract_vurnabilities_str(entire_log: str) -> str:
+    if re.search('INFO:Detectors:', entire_log):
+        return entire_log.split("INFO:Detectors:", 1)[1]
+    else:
+        return ''
+    
+def get_vurnabilities(varnabilities_str: str):
+    varnabilities_str= re.sub('\n\t', '\n ', varnabilities_str)
+    vurnabilities = varnabilities_str.split('INFO:Detectors:\n')
+    return list(map(lambda n: n.strip(), vurnabilities))
+
+def catch_output():
     root = os.path.dirname(os.path.abspath(__file__))
     cmd = ('slither', '.\\example_contracts\\lock.sol')
     p = subprocess.run(cmd, capture_output=True, text=True)
-    return get_warnings(p.stderr)
+    print('output:\n', p.stderr, '\n\n----')
+    warning_str = extract_warning_str(p.stderr)
+    vurnabilities_str = extract_vurnabilities_str(p.stderr)
+    return get_warnings(warning_str), get_vurnabilities(vurnabilities_str)
 
 if __name__ == '__main__':
-    catch_warnigns()
+    catch_output()
