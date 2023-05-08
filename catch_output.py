@@ -15,6 +15,16 @@ class Warning:
     def __repr__(self):
         return f'({self.name}, Line:{str(self.line)},\nCode: {self.code_str})\n'
 
+class Vulnerability:
+    def __init__(self, name, reference=None) -> None:
+        self.name = name
+        self.reference = reference
+    
+    def __str__(self):
+        return f'{self.name}\nReference:{str(self.reference)}\n'
+
+    def __repr__(self):
+        return f'({self.name}, Reference:{str(self.reference)}\n'
 
 def get_warnings(warning_str: str):
     warning_str = warning_str.replace('\n\n\n\n', '\n').replace('\n\n', '\n')
@@ -55,21 +65,28 @@ def extract_warning_str(entire_log: str) -> str:
         return ''
 
 
-def extract_vurnabilities_str(entire_log: str) -> str:
+def extract_vulnerabilities_str(entire_log: str) -> str:
     if re.search('INFO:Detectors:', entire_log):
         return entire_log.split("INFO:Detectors:", 1)[1]
     else:
         return ''
 
 
-def get_vurnabilities(varnabilities_str: str):
+def get_vulnerabilities(varnabilities_str: str):
     varnabilities_str = re.sub('\n', '<br>', varnabilities_str)
     varnabilities_str = re.sub('\t-', '- &emsp;', varnabilities_str)
-    vurnabilities = varnabilities_str.split('INFO:Detectors:<br>')
-    if vurnabilities:
-        vurnabilities[0] = re.sub('^<br>', '', vurnabilities[0])
-        vurnabilities[-1] = vurnabilities[-1].split('INFO:Slither:', 1)[0]
-    return vurnabilities
+    vulnerabilities = varnabilities_str.split('INFO:Detectors:<br>')
+    if vulnerabilities:
+        vulnerabilities[0] = re.sub('^<br>', '', vulnerabilities[0])
+        vulnerabilities[-1] = vulnerabilities[-1].split('INFO:Slither:', 1)[0]
+    
+    vur_objects = []
+    for vur in vulnerabilities:
+        content, reference = vur.split('Reference: ', 1)[:2]
+        reference = re.sub('<br>', '', reference)
+        vur_objects.append(Vulnerability(name=content, reference=reference))
+
+    return vur_objects
 
 
 def catch_output():
@@ -77,9 +94,11 @@ def catch_output():
     cmd = ('slither', '.\\example_contracts\\lock.sol')
     p = subprocess.run(cmd, capture_output=True, text=True)
     print('output:\n', p.stderr, '\n\n----')
+
     warning_str = extract_warning_str(p.stderr)
-    vurnabilities_str = extract_vurnabilities_str(p.stderr)
-    return get_warnings(warning_str), get_vurnabilities(vurnabilities_str)
+    vulnerabilities_str = extract_vulnerabilities_str(p.stderr)
+
+    return get_warnings(warning_str), get_vulnerabilities(vulnerabilities_str)
 
 
 if __name__ == '__main__':
