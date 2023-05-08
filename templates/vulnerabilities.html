@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% block content%}
 <main>
-    {% if vurnabilities %}
-    <h2>Vurnabilities</h2>
+    {% if vulnerabilities %}
+    <h2>Vulnerabilities</h2>
     <section class="alerts-list-wrapper">
-        {% for vur in vurnabilities %}
+        {% for vur in vulnerabilities %}
         <div class="alert-container">
             <div class="alert-icon-wrapper">
                 <div class="material-symbols-outlined icon">bug_report
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <pre>{{vur}}</pre>
+                <p>{{vur}}</p>
             </div>
             <div class="alert-bin-wrapper">
                 <label class="material-symbols-outlined"><input type="checkbox" class="hidden"/>close</label>
@@ -20,7 +20,7 @@
         {% endfor %}
     </section>
     {% else %}
-    <h2>Congrats! There are no vurnabilities.</h2>
+    <h2>Congrats! There are no vulnerabilities.</h2>
     {% endif %}
 </main>
 {% endblock content %}

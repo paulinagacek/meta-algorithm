@@ -11,7 +11,7 @@ class NavbarItem:
 nav_bar = [
     NavbarItem('Home', 'index.html', True),
     NavbarItem('Warnings', 'warnings.html', False),
-    NavbarItem('Vulnerabilities', 'vurnabilities.html', False),
+    NavbarItem('Vulnerabilities', 'vulnerabilities.html', False),
 ]
 
 def get_navbar(item_name: str):
@@ -36,13 +36,13 @@ with open(filename, 'w') as fh:
 # warnings
 template_warnings = env.get_template('warnings.html')
 filename = os.path.join(root, 'html', 'warnings.html')
-warnings, vurnabilities = catch_output()
-print('vurnabilities:', vurnabilities)
+warnings, vulnerabilities = catch_output()
+print('vulnerabilities:', vulnerabilities)
 with open(filename, 'w') as fh:
     fh.write(template_warnings.render(nav_bar=get_navbar('Warnings'), warnings=warnings))
 
-# vurnabilities
-template_vurnabilities = env.get_template('vurnabilities.html')
-filename = os.path.join(root, 'html', 'vurnabilities.html')
+# vulnerabilities
+template_vulnerabilities = env.get_template('vulnerabilities.html')
+filename = os.path.join(root, 'html', 'vulnerabilities.html')
 with open(filename, 'w') as fh:
-    fh.write(template_vurnabilities.render(nav_bar=get_navbar('Vurnabilities'), vurnabilities=vurnabilities))
+    fh.write(template_vulnerabilities.render(nav_bar=get_navbar('vulnerabilities'), vulnerabilities=vulnerabilities))
