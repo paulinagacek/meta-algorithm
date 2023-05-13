@@ -1,4 +1,7 @@
 wheel
-slither-analyzer
+slither-analyzer==0.8.1
 solc-select
 jinja2
+waitress
+predict
+manticore
