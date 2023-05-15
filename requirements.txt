@@ -1,7 +1,9 @@
+numpy
 wheel
 slither-analyzer==0.8.1
 solc-select
 jinja2
 waitress
 predict
+protobuf==3.20
 manticore
