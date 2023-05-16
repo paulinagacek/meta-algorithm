@@ -35,5 +35,5 @@ solc-select use 0.8.19
 1. Run generate_template.py:
     ```
     .venv\Scripts\activate
-    python .\generate_templates.py
+    python generate_templates.py
     ```

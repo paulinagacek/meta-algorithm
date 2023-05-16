@@ -28,5 +28,6 @@
             emit Withdrawal(address(this).balance, block.timestamp);
 
             balances[msg.sender] -= amount;
+            uint unlockTime2;
         }
     }

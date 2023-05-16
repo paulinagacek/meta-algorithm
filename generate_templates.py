@@ -37,7 +37,7 @@ with open(filename, 'w') as fh:
 template_warnings = env.get_template('warnings.html')
 filename = os.path.join(root, 'html', 'warnings.html')
 warnings, vulnerabilities = catch_output()
-print('vulnerabilities:', vulnerabilities)
+
 with open(filename, 'w') as fh:
     fh.write(template_warnings.render(nav_bar=get_navbar('Warnings'), warnings=warnings))
 

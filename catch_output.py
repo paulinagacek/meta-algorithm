@@ -24,7 +24,7 @@ class Vulnerability:
         return f'({self.name}, Reference:{str(self.reference)}\n'
 
 def get_warnings(warning_str: str):
-    warning_str = warning_str.replace('\n\n\n\n', '\n').replace('\n\n', '\n')
+    warning_str = warning_str.replace('\n\n', '\n')
 
     warnings = warning_str.split("Warning:")
     file_name = warnings[0].replace(
@@ -54,8 +54,8 @@ def extract_warning_str(entire_log: str) -> str:
     '''
 
     if re.search('Compilation warnings/errors on', entire_log) and re.search('Warning:', entire_log):
-        if re.search('INFO:Detectors:', entire_log):
-            return entire_log.split("INFO:Detectors:", 1)[0]
+        if re.search('\n\n\n', entire_log):
+            return entire_log.split("\n\n\n", 1)[0]
         else:
             return entire_log
     else:
@@ -70,17 +70,17 @@ def extract_vulnerabilities_str(entire_log: str) -> str:
 
 
 def get_vulnerabilities(varnabilities_str: str):
-    print('vur str:', varnabilities_str)
+   
     varnabilities_str = re.sub('\n', '<br>', varnabilities_str)
     varnabilities_str = re.sub('\t-', '- &emsp;', varnabilities_str)
-    vulnerabilities = varnabilities_str.split('INFO:Detectors:<br>')
+    varnabilities_str = re.sub('\\x1b\[(91|92|0)m', '', varnabilities_str)
+    vulnerabilities = varnabilities_str.split('<br><br>')
+
     if vulnerabilities:
         vulnerabilities[0] = re.sub('^<br>', '', vulnerabilities[0])
-        vulnerabilities[-1] = vulnerabilities[-1].split('INFO:Slither:', 1)[0]
     
     vur_objects = []
     for vur in vulnerabilities:
-        print('vur:', vur)
         content, reference = vur.split('Reference: ', 1)[:2]
         reference = re.sub('<br>', '', reference)
         vur_objects.append(Vulnerability(name=content, reference=reference))
@@ -92,8 +92,8 @@ def catch_output():
     root = os.path.dirname(os.path.abspath(__file__))
     cmd = ('slither', r'./example_contracts/lock.sol')
     p = subprocess.run(cmd, capture_output=True, text=True)
-    print('output:\n', p.stderr, '\n\n----')
-
+    # print('output:\n', p.stderr, '\n\n----')
+    
     warning_str = extract_warning_str(p.stderr)
     vulnerabilities_str = extract_vulnerabilities_str(p.stderr)
 
