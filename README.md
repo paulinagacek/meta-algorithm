@@ -1,6 +1,6 @@
 ## Set up
 1. Requirements
-- python 3.8+
+- python 3.8+, reccomended 3.8.10
 - Linux/ WSL
 - gcc
 
@@ -8,13 +8,20 @@
 ```bash
     sudo apt-get install python3.x-dev # where x is python version
     sudo apt-get install build-essential 
+    sudo apt install python3.x-venv
+    sudo apt-get install python3-dev python3-pip python3-venv python3-wheel -y
 ```
 
 3. Create virtual env and dowload all packages
 ```
-python -m venv .venv
-.\.venv\Scripts\activate
+python3 -m venv .venv
+.\.venv\Scripts\activate // windows
+source .venv/bin/activate
+
+pip install numpy
 pip install -r ./requirements.txt
+pip uninstall protobuf
+pip install protobuf==3.20
 ```
 
 4. Install solc compiler and set version

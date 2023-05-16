@@ -1,7 +1,4 @@
-import subprocess
-import re
-import os
-
+import subprocess, re, os
 
 class Warning:
     def __init__(self, name, line=None, code_str=None) -> None:
@@ -66,13 +63,14 @@ def extract_warning_str(entire_log: str) -> str:
 
 
 def extract_vulnerabilities_str(entire_log: str) -> str:
-    if re.search('INFO:Detectors:', entire_log):
-        return entire_log.split("INFO:Detectors:", 1)[1]
+    if re.search('analyzed (.* contracts with .* detectors)', entire_log):
+        return entire_log.split("\n\n\n", 1)[1]
     else:
         return ''
 
 
 def get_vulnerabilities(varnabilities_str: str):
+    print('vur str:', varnabilities_str)
     varnabilities_str = re.sub('\n', '<br>', varnabilities_str)
     varnabilities_str = re.sub('\t-', '- &emsp;', varnabilities_str)
     vulnerabilities = varnabilities_str.split('INFO:Detectors:<br>')
@@ -82,6 +80,7 @@ def get_vulnerabilities(varnabilities_str: str):
     
     vur_objects = []
     for vur in vulnerabilities:
+        print('vur:', vur)
         content, reference = vur.split('Reference: ', 1)[:2]
         reference = re.sub('<br>', '', reference)
         vur_objects.append(Vulnerability(name=content, reference=reference))
@@ -91,7 +90,7 @@ def get_vulnerabilities(varnabilities_str: str):
 
 def catch_output():
     root = os.path.dirname(os.path.abspath(__file__))
-    cmd = ('slither', '.\\example_contracts\\lock.sol')
+    cmd = ('slither', r'./example_contracts/lock.sol')
     p = subprocess.run(cmd, capture_output=True, text=True)
     print('output:\n', p.stderr, '\n\n----')
 
