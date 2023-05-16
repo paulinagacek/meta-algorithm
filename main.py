@@ -10,16 +10,20 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="html")
 
 @app.get("/", response_class=HTMLResponse)
-async def home(request: Request):
+async def home_get(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "nav_bar": get_navbar('Home')})
 
 @app.get("/warnings", response_class=HTMLResponse)
-async def home(request: Request):
+async def warnings_get(request: Request):
     return templates.TemplateResponse("warnings.html", {"request": request, "nav_bar": get_navbar('Warnings')})
 
 @app.get("/vulnerabilities", response_class=HTMLResponse)
-async def home(request: Request):
+async def vulnerabilities_get(request: Request):
     return templates.TemplateResponse("vulnerabilities.html", {"request": request, "nav_bar": get_navbar('Vulnerabilities')})
+
+@app.get("/symbolic-exec", response_class=HTMLResponse)
+async def symbolic_exec_get(request: Request):
+    return templates.TemplateResponse("symbolic_execution.html", {"request": request, "nav_bar": get_navbar('Vulnerabilities')})
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

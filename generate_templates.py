@@ -12,6 +12,7 @@ nav_bar = [
     NavbarItem('Home', '/', True),
     NavbarItem('Warnings', '/warnings', False),
     NavbarItem('Vulnerabilities', '/vulnerabilities', False),
+    NavbarItem('Symbolic Execution', '/symbolic-exec', False),
 ]
 
 def get_navbar(item_name: str):
@@ -46,3 +47,9 @@ def generate_templates(file_name= r'./example_contracts/lock.sol'):
     filename = os.path.join(root, 'html', 'vulnerabilities.html')
     with open(filename, 'w') as fh:
         fh.write(template_vulnerabilities.render(nav_bar=get_navbar('Vulnerabilities'), vulnerabilities=vulnerabilities))
+    
+    # symbolic execution
+    template_symbolic_exec = env.get_template('symbolic_execution.html')
+    filename = os.path.join(root, 'html', 'symbolic_execution.html')
+    with open(filename, 'w') as fh:
+        fh.write(template_symbolic_exec.render(nav_bar=get_navbar('Symbolic Execution')))
