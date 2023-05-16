@@ -9,9 +9,9 @@ class NavbarItem:
         self.isSelected = isSelected
 
 nav_bar = [
-    NavbarItem('Home', 'index.html', True),
-    NavbarItem('Warnings', 'warnings.html', False),
-    NavbarItem('Vulnerabilities', 'vulnerabilities.html', False),
+    NavbarItem('Home', '/', True),
+    NavbarItem('Warnings', '/warnings', False),
+    NavbarItem('Vulnerabilities', '/vulnerabilities', False),
 ]
 
 def get_navbar(item_name: str):
@@ -45,4 +45,4 @@ def generate_templates(file_name= r'./example_contracts/lock.sol'):
     template_vulnerabilities = env.get_template('vulnerabilities.html')
     filename = os.path.join(root, 'html', 'vulnerabilities.html')
     with open(filename, 'w') as fh:
-        fh.write(template_vulnerabilities.render(nav_bar=get_navbar('vulnerabilities'), vulnerabilities=vulnerabilities))
+        fh.write(template_vulnerabilities.render(nav_bar=get_navbar('Vulnerabilities'), vulnerabilities=vulnerabilities))

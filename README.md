@@ -37,3 +37,7 @@ solc-select use 0.8.19
     .venv\Scripts\activate
     python generate_templates.py
     ```
+
+## Documentation
+
+To see API documentation run application and visit: `http://127.0.0.1:8000/docs`.
