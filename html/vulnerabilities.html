@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <p>Reentrancy in Lock.withdraw(uint256) (example_contracts/lock.sol#20-32):<br>	External calls:<br>- &emsp; (sent) = address(msg.sender).call{value: amount}() (example_contracts/lock.sol#26)<br>	State variables written after the call(s):<br>- &emsp; balances[msg.sender] -= amount (example_contracts/lock.sol#30)<br></p>
+                <p>Reentrancy in Lock.withdraw(uint256) (example_contracts/lock2.sol#20-31):<br>	External calls:<br>- &emsp; (sent) = address(msg.sender).call{value: amount}() (example_contracts/lock2.sol#26)<br>	State variables written after the call(s):<br>- &emsp; balances[msg.sender] -= amount (example_contracts/lock2.sol#30)<br></p>
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities><button><span>Reference </span><span class="material-symbols-outlined">
                     quick_reference_all
                     </span></button></a>
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <p>Reentrancy in Lock.withdraw(uint256) (example_contracts/lock.sol#20-32):<br>	External calls:<br>- &emsp; (sent) = address(msg.sender).call{value: amount}() (example_contracts/lock.sol#26)<br>	Event emitted after the call(s):<br>- &emsp; Withdrawal(address(this).balance,block.timestamp) (example_contracts/lock.sol#28)<br></p>
+                <p>Reentrancy in Lock.withdraw(uint256) (example_contracts/lock2.sol#20-31):<br>	External calls:<br>- &emsp; (sent) = address(msg.sender).call{value: amount}() (example_contracts/lock2.sol#26)<br>	Event emitted after the call(s):<br>- &emsp; Withdrawal(address(this).balance,block.timestamp) (example_contracts/lock2.sol#28)<br></p>
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3><button><span>Reference </span><span class="material-symbols-outlined">
                     quick_reference_all
                     </span></button></a>
@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <p>Lock.constructor(uint256) (example_contracts/lock.sol#11-18) uses timestamp for comparisons<br>	Dangerous comparisons:<br>- &emsp; require(bool,string)(block.timestamp < _unlockTime,Unlock time should be in the future) (example_contracts/lock.sol#12-15)<br>Lock.withdraw(uint256) (example_contracts/lock.sol#20-32) uses timestamp for comparisons<br>	Dangerous comparisons:<br>- &emsp; require(bool,string)(block.timestamp >= unlockTime,You can't withdraw yet) (example_contracts/lock.sol#24)<br></p>
+                <p>Lock.constructor(uint256) (example_contracts/lock2.sol#11-18) uses timestamp for comparisons<br>	Dangerous comparisons:<br>- &emsp; require(bool,string)(block.timestamp < _unlockTime,Unlock time should be in the future) (example_contracts/lock2.sol#12-15)<br>Lock.withdraw(uint256) (example_contracts/lock2.sol#20-31) uses timestamp for comparisons<br>	Dangerous comparisons:<br>- &emsp; require(bool,string)(block.timestamp >= unlockTime,You can't withdraw yet) (example_contracts/lock2.sol#24)<br></p>
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp><button><span>Reference </span><span class="material-symbols-outlined">
                     quick_reference_all
                     </span></button></a>
@@ -96,7 +96,7 @@
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <p>Pragma version^0.8.9 (example_contracts/lock.sol#2) necessitates a version too recent to be trusted. Consider deploying with 0.6.12/0.7.6<br>solc-0.8.19 is not recommended for deployment<br></p>
+                <p>Pragma version^0.8.9 (example_contracts/lock2.sol#2) necessitates a version too recent to be trusted. Consider deploying with 0.6.12/0.7.6<br>solc-0.8.19 is not recommended for deployment<br></p>
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity><button><span>Reference </span><span class="material-symbols-outlined">
                     quick_reference_all
                     </span></button></a>
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <p>Low level call in Lock.withdraw(uint256) (example_contracts/lock.sol#20-32):<br>- &emsp; (sent) = address(msg.sender).call{value: amount}() (example_contracts/lock.sol#26)<br></p>
+                <p>Low level call in Lock.withdraw(uint256) (example_contracts/lock2.sol#20-31):<br>- &emsp; (sent) = address(msg.sender).call{value: amount}() (example_contracts/lock2.sol#26)<br></p>
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls><button><span>Reference </span><span class="material-symbols-outlined">
                     quick_reference_all
                     </span></button></a>
@@ -128,24 +128,8 @@
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <p>Variable Lock.constructor(uint256)._unlockTime (example_contracts/lock.sol#11) is too similar to Lock.withdraw(uint256).unlockTime2 (example_contracts/lock.sol#31)<br></p>
-                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#variable-names-are-too-similar><button><span>Reference </span><span class="material-symbols-outlined">
-                    quick_reference_all
-                    </span></button></a>
-            </div>
-            <div class="alert-bin-wrapper">
-                <label class="material-symbols-outlined"><input type="checkbox" class="hidden"/>close</label>
-            </div>
-        </div>
-        
-        <div class="alert-container">
-            <div class="alert-icon-wrapper">
-                <div class="material-symbols-outlined icon">bug_report
-                </div>
-            </div>
-            <div class="alert-body-wrapper">
-                <p>withdraw(uint256) should be declared external:<br>- &emsp; Lock.withdraw(uint256) (example_contracts/lock.sol#20-32)<br></p>
-                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external./example_contracts/lock.sol analyzed (1 contracts with 75 detectors), 9 result(s) found><button><span>Reference </span><span class="material-symbols-outlined">
+                <p>withdraw(uint256) should be declared external:<br>- &emsp; Lock.withdraw(uint256) (example_contracts/lock2.sol#20-31)<br></p>
+                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external./example_contracts/lock2.sol analyzed (1 contracts with 75 detectors), 8 result(s) found><button><span>Reference </span><span class="material-symbols-outlined">
                     quick_reference_all
                     </span></button></a>
             </div>

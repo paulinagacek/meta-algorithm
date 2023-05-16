@@ -88,11 +88,9 @@ def get_vulnerabilities(varnabilities_str: str):
     return vur_objects
 
 
-def catch_output():
-    root = os.path.dirname(os.path.abspath(__file__))
-    cmd = ('slither', r'./example_contracts/lock.sol')
+def catch_output(file_name):
+    cmd = ('slither', file_name)
     p = subprocess.run(cmd, capture_output=True, text=True)
-    # print('output:\n', p.stderr, '\n\n----')
     
     warning_str = extract_warning_str(p.stderr)
     vulnerabilities_str = extract_vulnerabilities_str(p.stderr)
