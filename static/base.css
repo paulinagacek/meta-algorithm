@@ -15,7 +15,6 @@
   --white: #faf8ff;
   --black: #29282e;
   --code-snippet: var(--white);
-
   --main-white: var(--light-cream);
 }
 
@@ -124,32 +123,6 @@ nav a:hover > nav a.selected:hover {
   margin-right: 16px;
 }
 
-.code-snippet-wrapper {
-  background-color: var(--code-snippet);
-  padding: 8px;
-  margin-block: 8px;
-  font-family: "Space Mono", monospace;
-
-  border-radius: 8px;
-  display: flex;
-  flex-direction: row;
-}
-
-.code-snippet-wrapper pre {
-  font-size: 0.72rem;
-  padding-left: 16px;
-  padding-top: 0.4rem;
-}
-
-p.code-line {
-  font-size: 0.64rem;
-  padding-left: 8px;
-}
-
-.code-snippet {
-  padding-inline: 8px;
-}
-
 section.alerts-list-wrapper {
   overflow-y: scroll;
   max-height: max(300px, 70vh);
@@ -205,38 +178,4 @@ label:hover {
 
 .alert-container:has(input:checked){
   display: none;
-}
-
-/** vulnerabilities **/
-
-button {
-  margin-top: 8px;
-  /* padding-bottom: 16px; */
-  padding-block: 8px;
-  padding-inline: 24px;
-  text-decoration: none;
-  color: var(--main-white);
-  background-color:  var(--middle-purple);
-  font-weight: 500;
-
-  /* width: 100%; */
-  border-radius: 16px;
-  float: right;
-
-  font-size: 1rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-
-button:hover{
-  background-color: var(--dark-purple);
-  -webkit-box-shadow: 8px 8px 24px -9pxvar (--dark-purple);
-  -moz-box-shadow: 8px 8px 24px -9pxvar (--dark-purple);
-  box-shadow: 8px 8px 24px -9pxvar (--dark-purple);
-  transform: translateY(1px);
 }

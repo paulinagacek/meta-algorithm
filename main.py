@@ -1,5 +1,5 @@
-from generate_templates import generate_templates, get_navbar
-from fastapi import FastAPI, Request
+from generate_templates import generate_templates
+from fastapi import FastAPI
 import sys, uvicorn
 
 from fastapi.staticfiles import StaticFiles
@@ -11,8 +11,8 @@ app.include_router(router)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 if __name__ == '__main__':
+    file_name= r'./example_contracts/lock.sol' # default file
     if len(sys.argv) > 1:
-        generate_templates(file_name=sys.argv[1])
-    else:
-        generate_templates()
+        file_name=sys.argv[1]
+    generate_templates(file_name)
     uvicorn.run("main:app", reload=True)
