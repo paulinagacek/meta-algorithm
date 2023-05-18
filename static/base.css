@@ -34,12 +34,6 @@ h2 {
   padding-block: 1rem;
 }
 
-h3 {
-  color: var(--black);
-  padding-block: 1rem;
-  margin-block: 1rem;
-}
-
 p {
   font-size: 0.8rem;
   line-height: 1.7rem;
@@ -245,10 +239,4 @@ button:hover{
   -moz-box-shadow: 8px 8px 24px -9pxvar (--dark-purple);
   box-shadow: 8px 8px 24px -9pxvar (--dark-purple);
   transform: translateY(1px);
-}
-
-h3 {
-  color: var(--black);
-  padding-block: 1rem;
-  margin-block: 1rem;
 }
