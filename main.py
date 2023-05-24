@@ -1,9 +1,8 @@
-from generate_templates import generate_templates
+from slither_analysis import analyse_slither
 from fastapi import FastAPI
 import sys, uvicorn
 
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 from routes import router
 
 app = FastAPI()
@@ -14,5 +13,5 @@ if __name__ == '__main__':
     file_name= r'./example_contracts/lock.sol' # default file
     if len(sys.argv) > 1:
         file_name=sys.argv[1]
-    generate_templates(file_name)
+    analyse_slither(file_name)
     uvicorn.run("main:app", reload=True)

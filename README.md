@@ -4,7 +4,7 @@
 - Linux/ WSL
 - gcc
 
-2. Setup Linux/ WSL
+2. Setup Linux/ WSL Ubuntu 20
 ```bash
     sudo apt-get install python3.x-dev # where x is python version
     sudo apt-get install build-essential 
@@ -15,7 +15,6 @@
 3. Create virtual env and dowload all packages
 ```
 python3 -m venv .venv
-.\.venv\Scripts\activate // windows
 source .venv/bin/activate
 
 pip install numpy
@@ -34,8 +33,8 @@ solc-select use 0.8.19
 
 1. Run generate_template.py:
     ```
-    .venv\Scripts\activate
-    python generate_templates.py
+    source .venv/bin/activate
+    python main.py
     ```
 
 ## Documentation
