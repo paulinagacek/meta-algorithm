@@ -175,8 +175,7 @@ section.alerts-list-wrapper::-webkit-scrollbar-thumb {
 }
 
 .alert-hidden {
-  /* display: none; */
-  height: 56px;
+  height: 60px;
   overflow: hidden;
   opacity: 0.5;
 }

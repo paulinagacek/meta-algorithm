@@ -1,7 +1,7 @@
 .code-snippet-wrapper {
     background-color: var(--code-snippet);
     padding: 8px;
-    margin-block: 16px;
+    margin-block: 24px;
     font-family: "Space Mono", monospace;
 
     border-radius: 8px;

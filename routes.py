@@ -2,7 +2,8 @@ from fastapi import APIRouter
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi import FastAPI, Request
-import pickle
+import pickle, os
+from jinja2 import Environment, FileSystemLoader
 
 class NavbarItem:
     def __init__(self, name, endpoint, isSelected) -> None:
@@ -28,6 +29,7 @@ def get_navbar(item_name: str):
 router = APIRouter()
 
 templates = Jinja2Templates(directory="templates")
+temporary = Jinja2Templates(directory="temp")
 
 
 @router.get("/", response_class=HTMLResponse)
@@ -44,7 +46,19 @@ async def warnings_get(request: Request):
 async def vulnerabilities_get(request: Request):
     with open('temp/vulnerabilities.pickle', 'rb') as handle:
         vulnerabilities = pickle.load(handle)
-    return templates.TemplateResponse("vulnerabilities.html", {"request": request, "nav_bar": get_navbar('Vulnerabilities'), "vulnerabilities": vulnerabilities})
+
+    # generate html temp file to be able to manipulate DOM in comunicates
+    # when trying to render with params it didn't work
+    root = os.path.dirname(os.path.abspath(__file__))
+    templates_dir = os.path.join(root, 'templates')
+    env = Environment(loader=FileSystemLoader(templates_dir))    
+    template_vulnerabilities = env.get_template('vulnerabilities.html')
+    des_filename = os.path.join(root, 'temp', 'vulnerabilities.html')
+
+    with open(des_filename, 'w') as fh:
+        fh.write(template_vulnerabilities.render(nav_bar=get_navbar('Vulnerabilities'), vulnerabilities=vulnerabilities))
+    
+    return temporary.TemplateResponse("vulnerabilities.html", {"request": request, "nav_bar": get_navbar('Vulnerabilities')})
 
 @router.get("/symbolic-exec", response_class=HTMLResponse)
 async def symbolic_exec_get(request: Request):
