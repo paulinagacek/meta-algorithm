@@ -15,6 +15,41 @@
     <link rel="stylesheet" href="/static/vulnerabilities.css">
 
     
+<script>
+    let closedVurIds = [];
+    const hiddenalertClassName = "alert-hidden";
+
+    function loadLocalStorage() {
+        if (localStorage.getItem("closedVurIds") != null) {
+            closedVurIds = JSON.parse(localStorage.getItem("closedVurIds"));
+            for (const id of closedVurIds) {
+                const elem = document.querySelector("#vur-" + id);
+                elem.classList.add(hiddenalertClassName);
+                elem.childNodes[5].childNodes[1].checked = true
+            }
+        }
+    }
+
+    window.onload = loadLocalStorage;
+
+    function doAlert(checkboxElem, warningId) {
+        if (checkboxElem.checked) {
+            closedVurIds.push(warningId);
+            checkboxElem.parentElement.parentElement.classList.add(hiddenalertClassName);
+            localStorage.setItem("closedVurIds", JSON.stringify(closedVurIds));
+        } else {
+            closedVurIds = JSON.parse(localStorage.getItem("closedVurIds"));
+            var index = closedVurIds.indexOf(warningId);
+            if (index > -1) {
+                closedVurIds.splice(index, 1);
+            }
+            console.log(closedVurIds);
+            checkboxElem.parentElement.parentElement.classList.remove(hiddenalertClassName);
+            localStorage.setItem("closedVurIds", JSON.stringify(closedVurIds));
+        }
+    }
+</script>
+
 </head>
 <body>
     <side-navbar>
@@ -46,7 +81,7 @@
     <h2>Vulnerabilities</h2>
     <section class="alerts-list-wrapper">
         
-        <div class="alert-container">
+        <div class="alert-container" id="vur-0"">
             <div class="alert-icon-wrapper">
                 <div class="material-symbols-outlined icon">bug_report
                 </div>
@@ -58,11 +93,11 @@
                     </span></button></a>
             </div>
             <div class="alert-bin-wrapper">
-                <label class="material-symbols-outlined"><input type="checkbox" class="hidden"/>close</label>
+                <input type="checkbox" onchange="doAlert(this,'0')" />
             </div>
         </div>
         
-        <div class="alert-container">
+        <div class="alert-container" id="vur-1"">
             <div class="alert-icon-wrapper">
                 <div class="material-symbols-outlined icon">bug_report
                 </div>
@@ -74,11 +109,11 @@
                     </span></button></a>
             </div>
             <div class="alert-bin-wrapper">
-                <label class="material-symbols-outlined"><input type="checkbox" class="hidden"/>close</label>
+                <input type="checkbox" onchange="doAlert(this,'1')" />
             </div>
         </div>
         
-        <div class="alert-container">
+        <div class="alert-container" id="vur-2"">
             <div class="alert-icon-wrapper">
                 <div class="material-symbols-outlined icon">bug_report
                 </div>
@@ -90,11 +125,11 @@
                     </span></button></a>
             </div>
             <div class="alert-bin-wrapper">
-                <label class="material-symbols-outlined"><input type="checkbox" class="hidden"/>close</label>
+                <input type="checkbox" onchange="doAlert(this,'2')" />
             </div>
         </div>
         
-        <div class="alert-container">
+        <div class="alert-container" id="vur-3"">
             <div class="alert-icon-wrapper">
                 <div class="material-symbols-outlined icon">bug_report
                 </div>
@@ -106,11 +141,11 @@
                     </span></button></a>
             </div>
             <div class="alert-bin-wrapper">
-                <label class="material-symbols-outlined"><input type="checkbox" class="hidden"/>close</label>
+                <input type="checkbox" onchange="doAlert(this,'3')" />
             </div>
         </div>
         
-        <div class="alert-container">
+        <div class="alert-container" id="vur-4"">
             <div class="alert-icon-wrapper">
                 <div class="material-symbols-outlined icon">bug_report
                 </div>
@@ -122,11 +157,11 @@
                     </span></button></a>
             </div>
             <div class="alert-bin-wrapper">
-                <label class="material-symbols-outlined"><input type="checkbox" class="hidden"/>close</label>
+                <input type="checkbox" onchange="doAlert(this,'4')" />
             </div>
         </div>
         
-        <div class="alert-container">
+        <div class="alert-container" id="vur-5"">
             <div class="alert-icon-wrapper">
                 <div class="material-symbols-outlined icon">bug_report
                 </div>
@@ -138,11 +173,11 @@
                     </span></button></a>
             </div>
             <div class="alert-bin-wrapper">
-                <label class="material-symbols-outlined"><input type="checkbox" class="hidden"/>close</label>
+                <input type="checkbox" onchange="doAlert(this,'5')" />
             </div>
         </div>
         
-        <div class="alert-container">
+        <div class="alert-container" id="vur-6"">
             <div class="alert-icon-wrapper">
                 <div class="material-symbols-outlined icon">bug_report
                 </div>
@@ -154,7 +189,7 @@
                     </span></button></a>
             </div>
             <div class="alert-bin-wrapper">
-                <label class="material-symbols-outlined"><input type="checkbox" class="hidden"/>close</label>
+                <input type="checkbox" onchange="doAlert(this,'6')" />
             </div>
         </div>
         

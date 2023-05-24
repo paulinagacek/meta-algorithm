@@ -2,13 +2,49 @@
 {% block style %}
     <link rel="stylesheet" href="/static/vulnerabilities.css">
 {% endblock %}
+{% block script %}
+<script>
+    let closedVurIds = [];
+    const hiddenalertClassName = "alert-hidden";
+
+    function loadLocalStorage() {
+        if (localStorage.getItem("closedVurIds") != null) {
+            closedVurIds = JSON.parse(localStorage.getItem("closedVurIds"));
+            for (const id of closedVurIds) {
+                const elem = document.querySelector("#vur-" + id);
+                elem.classList.add(hiddenalertClassName);
+                elem.childNodes[5].childNodes[1].checked = true
+            }
+        }
+    }
+
+    window.onload = loadLocalStorage;
+
+    function doAlert(checkboxElem, warningId) {
+        if (checkboxElem.checked) {
+            closedVurIds.push(warningId);
+            checkboxElem.parentElement.parentElement.classList.add(hiddenalertClassName);
+            localStorage.setItem("closedVurIds", JSON.stringify(closedVurIds));
+        } else {
+            closedVurIds = JSON.parse(localStorage.getItem("closedVurIds"));
+            var index = closedVurIds.indexOf(warningId);
+            if (index > -1) {
+                closedVurIds.splice(index, 1);
+            }
+            console.log(closedVurIds);
+            checkboxElem.parentElement.parentElement.classList.remove(hiddenalertClassName);
+            localStorage.setItem("closedVurIds", JSON.stringify(closedVurIds));
+        }
+    }
+</script>
+{% endblock %}
 {% block content%}
 <main>
     {% if vulnerabilities %}
     <h2>Vulnerabilities</h2>
     <section class="alerts-list-wrapper">
         {% for vur in vulnerabilities %}
-        <div class="alert-container">
+        <div class="alert-container" id="vur-{{vur.id}}"">
             <div class="alert-icon-wrapper">
                 <div class="material-symbols-outlined icon">bug_report
                 </div>
@@ -20,7 +56,7 @@
                     </span></button></a>
             </div>
             <div class="alert-bin-wrapper">
-                <label class="material-symbols-outlined"><input type="checkbox" class="hidden"/>close</label>
+                <input type="checkbox" onchange="doAlert(this,'{{vur.id}}')" />
             </div>
         </div>
         {% endfor %}

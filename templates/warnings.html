@@ -4,13 +4,13 @@
 {% endblock %}
 {% block script %}
 <script>
-    let closedIds = [];
+    let closedWarningsIds = [];
     const hiddenalertClassName = "alert-hidden";
 
     function loadLocalStorage() {
-        if (localStorage.getItem("closedIds") != null) {
-            closedIds = JSON.parse(localStorage.getItem("closedIds"));
-            for (const id of closedIds) {
+        if (localStorage.getItem("closedWarningsIds") != null) {
+            closedWarningsIds = JSON.parse(localStorage.getItem("closedWarningsIds"));
+            for (const id of closedWarningsIds) {
                 const elem = document.querySelector("#war-" + id);
                 elem.classList.add(hiddenalertClassName);
                 elem.childNodes[5].childNodes[1].checked = true
@@ -23,18 +23,18 @@
 
     function doAlert(checkboxElem, warningId) {
         if (checkboxElem.checked) {
-            closedIds.push(warningId);
+            closedWarningsIds.push(warningId);
             checkboxElem.parentElement.parentElement.classList.add(hiddenalertClassName);
-            localStorage.setItem("closedIds", JSON.stringify(closedIds));
+            localStorage.setItem("closedWarningsIds", JSON.stringify(closedWarningsIds));
         } else {
-            closedIds = JSON.parse(localStorage.getItem("closedIds"));
-            var index = closedIds.indexOf(warningId);
+            closedWarningsIds = JSON.parse(localStorage.getItem("closedWarningsIds"));
+            var index = closedWarningsIds.indexOf(warningId);
             if (index > -1) {
-                closedIds.splice(index, 1);
+                closedWarningsIds.splice(index, 1);
             }
-            console.log(closedIds);
+            console.log(closedWarningsIds);
             checkboxElem.parentElement.parentElement.classList.remove(hiddenalertClassName);
-            localStorage.setItem("closedIds", JSON.stringify(closedIds));
+            localStorage.setItem("closedWarningsIds", JSON.stringify(closedWarningsIds));
         }
     }
 </script>
