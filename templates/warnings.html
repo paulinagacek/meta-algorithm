@@ -1,27 +1,39 @@
 {% extends 'base.html' %}
 {% block style %}
-    <link rel="stylesheet" href="/static/warnings.css">
+<link rel="stylesheet" href="/static/warnings.css">
 {% endblock %}
 {% block script %}
 <script>
-    let closedIds = []
+    let closedIds = [];
+    const hiddenalertClassName = "alert-hidden";
 
-    function loadLocalStorage(){
-        if (localStorage.getItem("closedIds") != null){
+    function loadLocalStorage() {
+        if (localStorage.getItem("closedIds") != null) {
             closedIds = JSON.parse(localStorage.getItem("closedIds"));
             for (const id of closedIds) {
-                const elem = document.querySelector("#war-"+id);
-                elem.classList.add("hidden");
+                const elem = document.querySelector("#war-" + id);
+                elem.classList.add(hiddenalertClassName);
+                elem.childNodes[5].childNodes[1].checked = true
+                <!-- console.log(); -->
             }
         }
     }
 
     window.onload = loadLocalStorage;
-    
+
     function doAlert(checkboxElem, warningId) {
         if (checkboxElem.checked) {
             closedIds.push(warningId);
-            checkboxElem.parentElement.parentElement.parentElement.classList.add("hidden");
+            checkboxElem.parentElement.parentElement.classList.add(hiddenalertClassName);
+            localStorage.setItem("closedIds", JSON.stringify(closedIds));
+        } else {
+            closedIds = JSON.parse(localStorage.getItem("closedIds"));
+            var index = closedIds.indexOf(warningId);
+            if (index > -1) {
+                closedIds.splice(index, 1);
+            }
+            console.log(closedIds);
+            checkboxElem.parentElement.parentElement.classList.remove(hiddenalertClassName);
             localStorage.setItem("closedIds", JSON.stringify(closedIds));
         }
     }
@@ -49,8 +61,7 @@
                 {% endif %}
             </div>
             <div class="alert-bin-wrapper">
-                <label class="material-symbols-outlined">
-                    <input type="checkbox" class="hidden" onchange="doAlert(this,'{{warning.id}}')" />close</label>
+                <input type="checkbox" onchange="doAlert(this,'{{warning.id}}')" />
             </div>
         </div>
         {% endfor %}
@@ -60,4 +71,3 @@
     {% endif %}
 </main>
 {% endblock content %}
-

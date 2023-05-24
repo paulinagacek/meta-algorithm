@@ -125,6 +125,7 @@ nav a:hover>nav a.selected:hover {
 
 section.alerts-list-wrapper {
   overflow-y: scroll;
+  min-height: 250px;
   max-height: max(300px, 70vh);
   scrollbar-width: thin;
   scrollbar-color: var(--dark-purple) var(--main-white);
@@ -150,7 +151,7 @@ section.alerts-list-wrapper::-webkit-scrollbar-thumb {
 }
 
 .icon {
-  padding-top: 8px;
+  padding-top: 4px;
 }
 
 .alert-body-wrapper {
@@ -169,11 +170,13 @@ section.alerts-list-wrapper::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 
-label:hover {
-  background: #eee;
-  cursor: pointer;
-}
-
 .hidden {
   display: none;
+}
+
+.alert-hidden {
+  /* display: none; */
+  height: 56px;
+  overflow: hidden;
+  opacity: 0.5;
 }
