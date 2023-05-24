@@ -9,7 +9,7 @@ def get_warnings(warning_str: str):
         "Compilation warnings/errors on ", "").replace(":", "")
 
     out = []
-    for w in warnings[1:]:
+    for idx, w in enumerate(warnings[1:]):
         lines = w.split('\n')
         name = lines[0].strip()
 
@@ -22,7 +22,7 @@ def get_warnings(warning_str: str):
         if len(lines) > 3:
             code_str = re.sub('.*\|', '', lines[3])
 
-        out.append(Warning(name=name, line=line, code_str=code_str))
+        out.append(Warning(id=idx, name=name, line=line, code_str=code_str))
     return out
 
 
@@ -57,10 +57,10 @@ def get_vulnerabilities(varnabilities_str: str):
         vulnerabilities[0] = re.sub('^<br>', '', vulnerabilities[0])
     
     vur_objects = []
-    for vur in vulnerabilities:
+    for idx, vur in enumerate(vulnerabilities):
         content, reference = vur.split('Reference: ', 1)[:2]
         reference = re.sub('<br>', '', reference)
-        vur_objects.append(Vulnerability(name=content, reference=reference))
+        vur_objects.append(Vulnerability(id=idx, name=content, reference=reference))
 
     return vur_objects
 

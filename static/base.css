@@ -109,7 +109,7 @@ nav a.selected:hover {
   box-shadow: 8px 8px 24px -9pxvar (--dark-purple);
 }
 
-nav a:hover > nav a.selected:hover {
+nav a:hover>nav a.selected:hover {
   background-color: var(--main-white);
 }
 
@@ -161,21 +161,19 @@ section.alerts-list-wrapper::-webkit-scrollbar-thumb {
   cursor: pointer;
   color: var(--middle-purple);
   width: 48px;
+  height: 24px;
 }
 
 .alert-bin-wrapper:hover {
-    color: var(--black);
+  color: var(--black);
+  background-color: transparent;
 }
 
 label:hover {
-  background:#eee;
-  cursor:pointer;
+  background: #eee;
+  cursor: pointer;
 }
 
-.hidden{
-  display: none;
-}
-
-.alert-container:has(input:checked){
+.hidden {
   display: none;
 }

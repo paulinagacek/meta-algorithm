@@ -1,7 +1,8 @@
 import json
 
 class Warning:
-    def __init__(self, name, line=None, code_str=None) -> None:
+    def __init__(self, id, name, line=None, code_str=None) -> None:
+        self.id = id
         self.name = name
         self.line = line
         self.code_str = code_str
@@ -13,7 +14,8 @@ class Warning:
         return f'({self.name}, Line:{str(self.line)},\nCode: {self.code_str})\n'
 
 class Vulnerability:
-    def __init__(self, name, reference=None) -> None:
+    def __init__(self, id, name, reference=None) -> None:
+        self.id = id
         self.name = name
         self.reference = reference
     
