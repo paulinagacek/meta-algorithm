@@ -11,11 +11,10 @@
   --middle-purple: #484362;
   --middle-darker-purple: #413e55;
   --light-purle: #f4ecff;
-  --light-cream: #f7f2ff;
-  --white: #faf8ff;
+  --white: #fbfaff;
   --black: #29282e;
   --code-snippet: var(--white);
-  --main-white: var(--light-cream);
+  --main-white: var(--white);
 }
 
 h1 {
@@ -45,6 +44,7 @@ body {
   flex-flow: row;
   width: 100%;
   height: max(100vh, 480px);
+  background-color: rgb(250, 246, 255);
 }
 
 side-navbar {
@@ -56,7 +56,7 @@ side-navbar {
 main-content {
   width: 100%;
   padding-inline: min(80px, 10%);
-  background-color: var(--main-white);
+  background-color: white;
   color: var(--black);
   overflow-y: scroll;
 }
@@ -76,7 +76,7 @@ main-content {
 
 side-navbar h1 {
   margin-bottom: 32px;
-  color: var(--main-white);
+  color: white;
 }
 
 nav {
@@ -119,11 +119,6 @@ nav a:hover>nav a.selected:hover {
   gap: 16px;
 }
 
-article{
-  max-width: 600px;
-  margin-left: 10%;
-}
-
 .alert-container {
   padding-block: 16px;
   margin-block: 8px;
@@ -139,12 +134,12 @@ section.alerts-list-wrapper {
   min-height: 250px;
   max-height: max(300px, 70vh);
   scrollbar-width: thin;
-  scrollbar-color: var(--dark-purple) var(--main-white);
+  scrollbar-color: var(--dark-purple) white;
   margin-top: 16px;
 }
 
 section.alerts-list-wrapper::-webkit-scrollbar {
-  background-color: var(--main-white);
+  background-color: white;
   margin-inline: 8px;
 }
 
@@ -193,8 +188,4 @@ section.alerts-list-wrapper::-webkit-scrollbar-thumb {
 
 a{
   text-decoration: none;
-}
-
-li{
-  margin-inline: 10%;
 }

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block style %}
+<link rel="stylesheet" href="/static/info.css">
+{% endblock %}
+{% block content%}
+<article>
+    <h2>What is Code Analysis?</h2>
+    <p>
+        Code analysis examines software code to identify potential problems or
+        errors, verify that it adheres to coding standards, and ensure that it
+        is high-quality. Code analysis can be performed either statically by
+        examining the code without executing it or dynamically by executing it
+        and analyzing its behavior while running.
+    </p>
+
+    <h2>Why do we need meta analysis?</h2>
+    <p>Once you deploy a smart contract to the blockchain it is immutable, so all bugs has to be detected beforehand.
+    </p>
+    <p>There are numerous tools created for such analysis, but no tool can catch 100% vulnerabilities and that's why we have integrated 3 of them into one powerful meta analysis tool</p>
+
+    <h2>Tools used in meta analysis</h2>
+    <h3 class="tool">Slither</h3>
+    <p>
+        Slither is an open-source smart contract static analysis tool that statically analyses the code. 
+        
+        Slither takes Solidity Abstract Syntax Tree(AST) developed by Solidity Compiler from the source code as input. 
+        
+        Slither tool consists of a set of detectors to detect the vulnerabilities in the contract.
+    </p>
+
+    <h3 class="tool">Manticore</h3>
+    <p>Echidna is designed for fuzzing/property-based testing and developed in Haskell programming language. Fuzzing is
+        a technique that includes generating random inputs and makes it easy to automatically generate tests to detect
+        violations in assertions and custom properties.</p>
+
+    <h3 class="tool">Echidna</h3>
+    <p>Echidna is designed for fuzzing/property-based testing and developed in Haskell programming language. Fuzzing is
+        a technique that includes generating random inputs and makes it easy to automatically generate tests to detect
+        violations in assertions and custom properties.</p>
+
+    <h2>Recommended resources:</h2>
+    <ul>
+        <li>
+            <a href="https://www.youtube.com/watch?v=fln_HPA2uOM&t=1473s">How to Hack Smart Contracts With Slither &
+                Echinda</a>
+        </li>
+    </ul>
+</article>
+{% endblock content %}

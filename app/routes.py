@@ -4,6 +4,7 @@ from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
 
 import pickle, os
+from models import Stats
 
 class NavbarItem:
     def __init__(self, name, endpoint, isSelected, emoji) -> None:
@@ -17,6 +18,7 @@ nav_bar = [
     NavbarItem('Warnings', '/warnings', False, "warning"),
     NavbarItem('Vulnerabilities', '/vulnerabilities', False, "bug_report"),
     NavbarItem('Symbolic Execution', '/symbolic-exec', False, "bolt"),
+    NavbarItem('Info', '/info', False, "info"),
 ]
 
 def get_navbar(item_name: str):
@@ -36,7 +38,18 @@ temporary = Jinja2Templates(directory=parent_dir_path+"/temp")
 
 @router.get("/", response_class=HTMLResponse)
 async def home_get(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request, "nav_bar": get_navbar('Home')})
+    with open(parent_dir_path + '/temp/warnings.pickle', 'rb') as handle:
+        warnings = pickle.load(handle)
+    
+    with open(parent_dir_path + '/temp/vulnerabilities.pickle', 'rb') as handle:
+        vulnerabilities = pickle.load(handle)
+    
+    stats = {
+        Stats("Warnings", len(warnings)),
+        Stats("Vulnerabilities dettected by slither", len(vulnerabilities))
+    }
+    
+    return templates.TemplateResponse("index.html", {"request": request, "nav_bar": get_navbar('Home'), "stats": stats})
 
 @router.get("/warnings", response_class=HTMLResponse)
 async def warnings_get(request: Request):
@@ -65,3 +78,7 @@ async def vulnerabilities_get(request: Request):
 @router.get("/symbolic-exec", response_class=HTMLResponse)
 async def symbolic_exec_get(request: Request):
     return templates.TemplateResponse("symbolic_execution.html", {"request": request, "nav_bar": get_navbar('Vulnerabilities')})
+
+@router.get("/info", response_class=HTMLResponse)
+async def info_get(request: Request):
+    return templates.TemplateResponse("info.html", {"request": request, "nav_bar": get_navbar('Info')})

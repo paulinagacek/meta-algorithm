@@ -69,6 +69,7 @@ def get_vulnerabilities(varnabilities_str: str):
 def analyse_slither(file_name):
     cmd = ('slither', file_name)
     p = subprocess.run(cmd, capture_output=True, text=True)
+    # print(p.stderr)
     
     warning_str = extract_warning_str(p.stderr)
     warnings = get_warnings(warning_str)
@@ -85,4 +86,4 @@ def analyse_slither(file_name):
         pickle.dump(vulnerabilities, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 if __name__ == '__main__':
-    analyse_slither(file_name= r'./example_contracts/lock.sol')
+    analyse_slither(file_name= r'./example_contracts/slither_vur.sol')

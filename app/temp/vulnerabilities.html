@@ -80,6 +80,12 @@
                     <h3>Symbolic Execution</h3>
                 </a>
             
+                <a href="/info" class="navbar-item  ">
+                    <h3 class="material-symbols-outlined icon">info
+                    </h3>
+                    <h3>Info</h3>
+                </a>
+            
         </nav>
     </side-navbar>
     <main-content>
@@ -95,8 +101,8 @@
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <p>Reentrancy in Lock.withdraw(uint256) (example_contracts/lock.sol#20-32):<br>	External calls:<br>- &emsp; (sent) = address(msg.sender).call{value: amount}() (example_contracts/lock.sol#26)<br>	State variables written after the call(s):<br>- &emsp; balances[msg.sender] -= amount (example_contracts/lock.sol#30)<br></p>
-                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities><button><span>Reference </span><span class="material-symbols-outlined">
+                <p>Vulnerability.f() (example_contracts/slither_vur.sol#152-155) passes array Vulnerability.x (example_contracts/slither_vur.sol#150)by reference to Vulnerability.f2(uint256[1]) (example_contracts/slither_vur.sol#161-163)which only takes arrays by value<br></p>
+                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#modifying-storage-array-by-value><button><span>Reference </span><span class="material-symbols-outlined">
                     quick_reference_all
                     </span></button></a>
             </div>
@@ -111,8 +117,8 @@
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <p>Reentrancy in Lock.withdraw(uint256) (example_contracts/lock.sol#20-32):<br>	External calls:<br>- &emsp; (sent) = address(msg.sender).call{value: amount}() (example_contracts/lock.sol#26)<br>	Event emitted after the call(s):<br>- &emsp; Withdrawal(address(this).balance,block.timestamp) (example_contracts/lock.sol#28)<br></p>
-                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3><button><span>Reference </span><span class="material-symbols-outlined">
+                <p>Vulnerability.winLottery() (example_contracts/slither_vur.sol#124-126) uses a weak PRNG: "lotteryWinningNumber = uint256(block.timestamp) % 10 (example_contracts/slither_vur.sol#125)" <br></p>
+                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG><button><span>Reference </span><span class="material-symbols-outlined">
                     quick_reference_all
                     </span></button></a>
             </div>
@@ -127,8 +133,8 @@
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <p>Lock.constructor(uint256) (example_contracts/lock.sol#11-18) uses timestamp for comparisons<br>	Dangerous comparisons:<br>- &emsp; require(bool,string)(block.timestamp < _unlockTime,Unlock time should be in the future) (example_contracts/lock.sol#12-15)<br>Lock.withdraw(uint256) (example_contracts/lock.sol#20-32) uses timestamp for comparisons<br>	Dangerous comparisons:<br>- &emsp; require(bool,string)(block.timestamp >= unlockTime,You can't withdraw yet) (example_contracts/lock.sol#24)<br></p>
-                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp><button><span>Reference </span><span class="material-symbols-outlined">
+                <p>Vulnerability.delegate(address,bytes) (example_contracts/slither_vur.sol#109-111) uses delegatecall to a input-controlled function id<br>- &emsp; (result) = _to.delegatecall(_data) (example_contracts/slither_vur.sol#110)<br></p>
+                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#controlled-delegatecall><button><span>Reference </span><span class="material-symbols-outlined">
                     quick_reference_all
                     </span></button></a>
             </div>
@@ -143,8 +149,8 @@
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <p>Pragma version^0.8.9 (example_contracts/lock.sol#2) necessitates a version too recent to be trusted. Consider deploying with 0.6.12/0.7.6<br>solc-0.8.19 is not recommended for deployment<br></p>
-                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity><button><span>Reference </span><span class="material-symbols-outlined">
+                <p>Reentrancy in Vulnerability.withdraw(uint256) (example_contracts/slither_vur.sol#114-120):<br>	External calls:<br>- &emsp; (result) = msg.sender.call{value: _amount}() (example_contracts/slither_vur.sol#116)<br>	State variables written after the call(s):<br>- &emsp; balances[msg.sender] -= _amount (example_contracts/slither_vur.sol#118)<br></p>
+                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities><button><span>Reference </span><span class="material-symbols-outlined">
                     quick_reference_all
                     </span></button></a>
             </div>
@@ -159,8 +165,8 @@
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <p>Low level call in Lock.withdraw(uint256) (example_contracts/lock.sol#20-32):<br>- &emsp; (sent) = address(msg.sender).call{value: amount}() (example_contracts/lock.sol#26)<br></p>
-                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls><button><span>Reference </span><span class="material-symbols-outlined">
+                <p>Vulnerability.kill() (example_contracts/slither_vur.sol#104-106) allows anyone to destruct the contract<br></p>
+                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#suicidal><button><span>Reference </span><span class="material-symbols-outlined">
                     quick_reference_all
                     </span></button></a>
             </div>
@@ -175,8 +181,8 @@
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <p>Variable Lock.constructor(uint256)._unlockTime (example_contracts/lock.sol#11) is too similar to Lock.withdraw(uint256).unlockTime2 (example_contracts/lock.sol#31)<br></p>
-                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#variable-names-are-too-similar><button><span>Reference </span><span class="material-symbols-outlined">
+                <p>Vulnerability.USDCTransfer(address,address,uint256) (example_contracts/slither_vur.sol#95-101) ignores return value by IERC20(USDC).transferFrom(_from,_to,_amount) (example_contracts/slither_vur.sol#100)<br></p>
+                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer[93mVulnerability.divideBeforeMultiply(uint256,uint256,uint256) (example_contracts/slither_vur.sol#131-133) performs a multiplication on the result of a division:- &emsp;amt = (a / b) * c (example_contracts/slither_vur.sol#132)Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply[93mVulnerability.fund_reached() (example_contracts/slither_vur.sol#89-91) uses a dangerous strict equality:- &emsp; address(this).balance == 100000000000000000000 (example_contracts/slither_vur.sol#90)Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities[93mVulnerability.txOriginExploit(uint256) (example_contracts/slither_vur.sol#136-139) uses tx.origin for authorization: require(bool)(tx.origin == owner) (example_contracts/slither_vur.sol#137)Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-usage-of-txorigin[93mVulnerability.transferMoney().to (example_contracts/slither_vur.sol#143) is a local variable never initializedReference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables><button><span>Reference </span><span class="material-symbols-outlined">
                     quick_reference_all
                     </span></button></a>
             </div>
@@ -191,13 +197,93 @@
                 </div>
             </div>
             <div class="alert-body-wrapper">
-                <p>withdraw(uint256) should be declared external:<br>- &emsp; Lock.withdraw(uint256) (example_contracts/lock.sol#20-32)<br></p>
-                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external./example_contracts/lock.sol analyzed (1 contracts with 75 detectors), 9 result(s) found><button><span>Reference </span><span class="material-symbols-outlined">
+                <p>Vulnerability.delegate(address,bytes)._to (example_contracts/slither_vur.sol#109) lacks a zero-check on :<br>	- &emsp; (result) = _to.delegatecall(_data) (example_contracts/slither_vur.sol#110)<br></p>
+                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation><button><span>Reference </span><span class="material-symbols-outlined">
                     quick_reference_all
                     </span></button></a>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'6')" />
+            </div>
+        </div>
+        
+        <div class="alert-container" id="vur-7">
+            <div class="alert-icon-wrapper">
+                <div class="material-symbols-outlined icon">bug_report
+                </div>
+            </div>
+            <div class="alert-body-wrapper">
+                <p>Pragma version^0.8.9 (example_contracts/slither_vur.sol#2) necessitates a version too recent to be trusted. Consider deploying with 0.6.12/0.7.6<br>solc-0.8.19 is not recommended for deployment<br></p>
+                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity><button><span>Reference </span><span class="material-symbols-outlined">
+                    quick_reference_all
+                    </span></button></a>
+            </div>
+            <div class="alert-bin-wrapper">
+                <input type="checkbox" onchange="doAlert(this,'7')" />
+            </div>
+        </div>
+        
+        <div class="alert-container" id="vur-8">
+            <div class="alert-icon-wrapper">
+                <div class="material-symbols-outlined icon">bug_report
+                </div>
+            </div>
+            <div class="alert-body-wrapper">
+                <p>Low level call in Vulnerability.delegate(address,bytes) (example_contracts/slither_vur.sol#109-111):<br>- &emsp; (result) = _to.delegatecall(_data) (example_contracts/slither_vur.sol#110)<br>Low level call in Vulnerability.withdraw(uint256) (example_contracts/slither_vur.sol#114-120):<br>- &emsp; (result) = msg.sender.call{value: _amount}() (example_contracts/slither_vur.sol#116)<br>Low level call in Vulnerability.transferMoney() (example_contracts/slither_vur.sol#142-146):<br>- &emsp; (result) = to.call{value: address(this).balance}() (example_contracts/slither_vur.sol#144)<br></p>
+                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls><button><span>Reference </span><span class="material-symbols-outlined">
+                    quick_reference_all
+                    </span></button></a>
+            </div>
+            <div class="alert-bin-wrapper">
+                <input type="checkbox" onchange="doAlert(this,'8')" />
+            </div>
+        </div>
+        
+        <div class="alert-container" id="vur-9">
+            <div class="alert-icon-wrapper">
+                <div class="material-symbols-outlined icon">bug_report
+                </div>
+            </div>
+            <div class="alert-body-wrapper">
+                <p>Function Vulnerability.fund_reached() (example_contracts/slither_vur.sol#89-91) is not in mixedCase<br>Function Vulnerability.USDCTransfer(address,address,uint256) (example_contracts/slither_vur.sol#95-101) is not in mixedCase<br>Parameter Vulnerability.USDCTransfer(address,address,uint256)._from (example_contracts/slither_vur.sol#96) is not in mixedCase<br>Parameter Vulnerability.USDCTransfer(address,address,uint256)._to (example_contracts/slither_vur.sol#97) is not in mixedCase<br>Parameter Vulnerability.USDCTransfer(address,address,uint256)._amount (example_contracts/slither_vur.sol#98) is not in mixedCase<br>Parameter Vulnerability.delegate(address,bytes)._to (example_contracts/slither_vur.sol#109) is not in mixedCase<br>Parameter Vulnerability.delegate(address,bytes)._data (example_contracts/slither_vur.sol#109) is not in mixedCase<br>Parameter Vulnerability.withdraw(uint256)._amount (example_contracts/slither_vur.sol#114) is not in mixedCase<br>Parameter Vulnerability.txOriginExploit(uint256)._amount (example_contracts/slither_vur.sol#136) is not in mixedCase<br>Variable Vulnerability.USDC (example_contracts/slither_vur.sol#79) is not in mixedCase<br></p>
+                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions><button><span>Reference </span><span class="material-symbols-outlined">
+                    quick_reference_all
+                    </span></button></a>
+            </div>
+            <div class="alert-bin-wrapper">
+                <input type="checkbox" onchange="doAlert(this,'9')" />
+            </div>
+        </div>
+        
+        <div class="alert-container" id="vur-10">
+            <div class="alert-icon-wrapper">
+                <div class="material-symbols-outlined icon">bug_report
+                </div>
+            </div>
+            <div class="alert-body-wrapper">
+                <p>Vulnerability.USDC (example_contracts/slither_vur.sol#79) should be constant<br></p>
+                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant><button><span>Reference </span><span class="material-symbols-outlined">
+                    quick_reference_all
+                    </span></button></a>
+            </div>
+            <div class="alert-bin-wrapper">
+                <input type="checkbox" onchange="doAlert(this,'10')" />
+            </div>
+        </div>
+        
+        <div class="alert-container" id="vur-11">
+            <div class="alert-icon-wrapper">
+                <div class="material-symbols-outlined icon">bug_report
+                </div>
+            </div>
+            <div class="alert-body-wrapper">
+                <p>fund_reached() should be declared external:<br>- &emsp; Vulnerability.fund_reached() (example_contracts/slither_vur.sol#89-91)<br>USDCTransfer(address,address,uint256) should be declared external:<br>- &emsp; Vulnerability.USDCTransfer(address,address,uint256) (example_contracts/slither_vur.sol#95-101)<br>kill() should be declared external:<br>- &emsp; Vulnerability.kill() (example_contracts/slither_vur.sol#104-106)<br>delegate(address,bytes) should be declared external:<br>- &emsp; Vulnerability.delegate(address,bytes) (example_contracts/slither_vur.sol#109-111)<br>divideBeforeMultiply(uint256,uint256,uint256) should be declared external:<br>- &emsp; Vulnerability.divideBeforeMultiply(uint256,uint256,uint256) (example_contracts/slither_vur.sol#131-133)<br>txOriginExploit(uint256) should be declared external:<br>- &emsp; Vulnerability.txOriginExploit(uint256) (example_contracts/slither_vur.sol#136-139)<br>transferMoney() should be declared external:<br>- &emsp; Vulnerability.transferMoney() (example_contracts/slither_vur.sol#142-146)<br>f() should be declared external:<br>- &emsp; Vulnerability.f() (example_contracts/slither_vur.sol#152-155)<br></p>
+                <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external./example_contracts/slither_vur.sol analyzed (2 contracts with 75 detectors), 35 result(s) found><button><span>Reference </span><span class="material-symbols-outlined">
+                    quick_reference_all
+                    </span></button></a>
+            </div>
+            <div class="alert-bin-wrapper">
+                <input type="checkbox" onchange="doAlert(this,'11')" />
             </div>
         </div>
         

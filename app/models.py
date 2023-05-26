@@ -22,3 +22,8 @@ class Vulnerability:
 
     def __repr__(self):
         return f'({self.name}, Reference:{str(self.reference)}\n'
+
+class Stats:
+    def __init__(self, name, nr) -> None:
+        self.name = name
+        self.number_of_occurence = nr
