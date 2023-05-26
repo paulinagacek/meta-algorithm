@@ -54,7 +54,7 @@ side-navbar {
 }
 
 main-content {
-  width: calc(100% - min(400px, 30%));
+  width: 100%;
   padding-inline: min(80px, 10%);
   background-color: var(--main-white);
   color: var(--black);
@@ -113,6 +113,17 @@ nav a:hover>nav a.selected:hover {
   background-color: var(--main-white);
 }
 
+.navbar-item{
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+article{
+  max-width: 600px;
+  margin-left: 10%;
+}
+
 .alert-container {
   padding-block: 16px;
   margin-block: 8px;
@@ -151,7 +162,7 @@ section.alerts-list-wrapper::-webkit-scrollbar-thumb {
 }
 
 .icon {
-  padding-top: 4px;
+  padding-top: 2px;
 }
 
 .alert-body-wrapper {
@@ -178,4 +189,12 @@ section.alerts-list-wrapper::-webkit-scrollbar-thumb {
   height: 60px;
   overflow: hidden;
   opacity: 0.5;
+}
+
+a{
+  text-decoration: none;
+}
+
+li{
+  margin-inline: 10%;
 }

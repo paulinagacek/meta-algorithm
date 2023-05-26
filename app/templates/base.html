@@ -19,7 +19,9 @@
         <h1>Meta analysis</h1>
         <nav>
             {% for item in nav_bar %}
-                <a href="{{item.endpoint}}" {% if item.isSelected %}class="selected"{% endif %}>
+                <a href="{{item.endpoint}}" class="navbar-item  {% if item.isSelected %} selected {% endif %}">
+                    <h3 class="material-symbols-outlined icon">{{item.emoji}}
+                    </h3>
                     <h3>{{item.name}}</h3>
                 </a>
             {% endfor %}

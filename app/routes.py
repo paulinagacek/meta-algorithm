@@ -6,16 +6,17 @@ from jinja2 import Environment, FileSystemLoader
 import pickle, os
 
 class NavbarItem:
-    def __init__(self, name, endpoint, isSelected) -> None:
+    def __init__(self, name, endpoint, isSelected, emoji) -> None:
         self.name = name
         self.endpoint = endpoint
         self.isSelected = isSelected
+        self.emoji = emoji
 
 nav_bar = [
-    NavbarItem('Home', '/', True),
-    NavbarItem('Warnings', '/warnings', False),
-    NavbarItem('Vulnerabilities', '/vulnerabilities', False),
-    NavbarItem('Symbolic Execution', '/symbolic-exec', False),
+    NavbarItem('Home', '/', True, "home"),
+    NavbarItem('Warnings', '/warnings', False, "warning"),
+    NavbarItem('Vulnerabilities', '/vulnerabilities', False, "bug_report"),
+    NavbarItem('Symbolic Execution', '/symbolic-exec', False, "bolt"),
 ]
 
 def get_navbar(item_name: str):
