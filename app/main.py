@@ -1,13 +1,14 @@
 from slither_analysis import analyse_slither
 from fastapi import FastAPI
-import sys, uvicorn
+import sys, uvicorn, os
 
 from fastapi.staticfiles import StaticFiles
 from routes import router
 
 app = FastAPI()
 app.include_router(router)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+parent_dir_path = os.path.dirname(os.path.realpath(__file__))
+app.mount("/static", StaticFiles(directory=parent_dir_path+"/static"), name="static")
 
 if __name__ == '__main__':
     file_name= r'./example_contracts/lock.sol' # default file

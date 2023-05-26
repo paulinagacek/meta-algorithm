@@ -28,8 +28,9 @@ def get_navbar(item_name: str):
 
 router = APIRouter()
 
-templates = Jinja2Templates(directory="templates")
-temporary = Jinja2Templates(directory="temp")
+parent_dir_path = os.path.dirname(os.path.realpath(__file__))
+templates = Jinja2Templates(directory=parent_dir_path+"/templates")
+temporary = Jinja2Templates(directory=parent_dir_path+"/temp")
 
 
 @router.get("/", response_class=HTMLResponse)
@@ -38,13 +39,13 @@ async def home_get(request: Request):
 
 @router.get("/warnings", response_class=HTMLResponse)
 async def warnings_get(request: Request):
-    with open('temp/warnings.pickle', 'rb') as handle:
+    with open(parent_dir_path + '/temp/warnings.pickle', 'rb') as handle:
         warnings = pickle.load(handle)
     return templates.TemplateResponse("warnings.html", {"request": request, "nav_bar": get_navbar('Warnings'), "warnings":warnings})
 
 @router.get("/vulnerabilities", response_class=HTMLResponse)
 async def vulnerabilities_get(request: Request):
-    with open('temp/vulnerabilities.pickle', 'rb') as handle:
+    with open(parent_dir_path + '/temp/vulnerabilities.pickle', 'rb') as handle:
         vulnerabilities = pickle.load(handle)
 
     # generate html temp file to be able to manipulate DOM in comunicates
