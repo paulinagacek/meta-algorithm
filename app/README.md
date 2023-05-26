@@ -37,6 +37,11 @@ solc-select use 0.8.19
     python main.py
     ```
 
+## Running with docker :whale:
+```
+docker run -p 80:80 meta-alg
+```
+
 ## Documentation
 
 To see API documentation run application and visit: `http://127.0.0.1:8000/docs`.

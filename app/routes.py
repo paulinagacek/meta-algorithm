@@ -1,9 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from fastapi import FastAPI, Request
-import pickle, os
 from jinja2 import Environment, FileSystemLoader
+
+import pickle, os
 
 class NavbarItem:
     def __init__(self, name, endpoint, isSelected) -> None:

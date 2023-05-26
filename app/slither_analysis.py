@@ -1,4 +1,5 @@
-import subprocess, re, os, pickle
+import subprocess, re, os, pickle, sys
+sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from models import Warning, Vulnerability
 
 def get_warnings(warning_str: str):
@@ -79,6 +80,9 @@ def analyse_slither(file_name):
 
     with open(parent_dir_path + '/temp/warnings.pickle', 'wb') as handle:
         pickle.dump(warnings, handle, protocol=pickle.HIGHEST_PROTOCOL)
-    
+
     with open(parent_dir_path + '/temp/vulnerabilities.pickle', 'wb') as handle:
         pickle.dump(vulnerabilities, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+if __name__ == '__main__':
+    analyse_slither(file_name= r'./example_contracts/lock.sol')

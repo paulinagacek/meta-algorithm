@@ -1,5 +1,3 @@
-import json
-
 class Warning:
     def __init__(self, id, name, line=None, code_str=None) -> None:
         self.id = id

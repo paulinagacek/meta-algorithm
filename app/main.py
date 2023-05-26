@@ -1,9 +1,10 @@
-from slither_analysis import analyse_slither
-from fastapi import FastAPI
-import sys, uvicorn, os
+from app.slither_analysis import analyse_slither
+from app.routes import router
 
+from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from routes import router
+
+import sys, os
 
 app = FastAPI()
 app.include_router(router)
@@ -15,4 +16,3 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         file_name=sys.argv[1]
     analyse_slither(file_name)
-    uvicorn.run("main:app", reload=True)
