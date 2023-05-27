@@ -61,6 +61,16 @@ main-content {
   background-color: white;
   color: var(--black);
   overflow-y: scroll;
+  padding-top: 0px;
+}
+
+.sticky-h2 {
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+  z-index: 100;
+  padding-top: 64px;
 }
 
 main-content::-webkit-scrollbar {
@@ -71,8 +81,7 @@ main-content::-webkit-scrollbar-thumb {
   background-color: var(--main-white);
 }
 
-side-navbar,
-main-content {
+side-navbar{
   padding-block: 64px;
 }
 
@@ -134,7 +143,6 @@ nav a:hover>nav a.selected:hover {
 section.alerts-list-wrapper {
   overflow-y: scroll;
   min-height: 250px;
-  max-height: max(300px, 70vh);
   scrollbar-width: thin;
   scrollbar-color: var(--dark-purple) white;
   margin-top: 16px;

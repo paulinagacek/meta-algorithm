@@ -28,15 +28,15 @@
   align-items: center;
 }
 
-.CRITICAL {
+.critical {
   background-color: var(--dark-purple);
 }
 
-.MEDIUM {
+.medium {
   background-color: var(--purple);
 }
 
-.SUGESTION {
+.suggestion {
   background-color: var(--middle-light-purple);
 }
 

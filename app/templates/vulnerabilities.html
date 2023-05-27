@@ -41,7 +41,7 @@
 {% block content%}
 <main>
     {% if vulnerabilities %}
-    <h2>Vulnerabilities <a href="https://github.com/crytic/slither">(slither)</a> </h2>
+    <h2 class="sticky-h2">Vulnerabilities <a href="https://github.com/crytic/slither">(slither)</a> </h2>
     <section class="alerts-list-wrapper">
         {% for vur in vulnerabilities %}
         <div class="alert-container" id="vur-{{vur.id}}">

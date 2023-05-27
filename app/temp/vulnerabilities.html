@@ -92,7 +92,7 @@
         
 <main>
     
-    <h2>Vulnerabilities <a href="https://github.com/crytic/slither">(slither)</a> </h2>
+    <h2 class="sticky-h2">Vulnerabilities <a href="https://github.com/crytic/slither">(slither)</a> </h2>
     <section class="alerts-list-wrapper">
         
         <div class="alert-container" id="vur-0">
@@ -103,8 +103,8 @@
             <div class="alert-body-wrapper">
                 <p>Vulnerability.f()  passes array Vulnerability.x by reference to Vulnerability.f2(uint256[1]) which only takes arrays by value<br></p>
             </div>
-            <div class="impact-label CRITICAL">
-                <p>CRITICAL</p>
+            <div class="impact-label critical">
+                <p>critical</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'0')" />
@@ -124,8 +124,8 @@
             <div class="alert-body-wrapper">
                 <p>Vulnerability.winLottery()  uses a weak PRNG: "lotteryWinningNumber = uint256(block.timestamp) % 10 " <br></p>
             </div>
-            <div class="impact-label CRITICAL">
-                <p>CRITICAL</p>
+            <div class="impact-label critical">
+                <p>critical</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'1')" />
@@ -145,8 +145,8 @@
             <div class="alert-body-wrapper">
                 <p>Vulnerability.delegate(address,bytes)  uses delegatecall to a input-controlled function id<br>- &emsp; (result) = _to.delegatecall(_data) <br></p>
             </div>
-            <div class="impact-label CRITICAL">
-                <p>CRITICAL</p>
+            <div class="impact-label critical">
+                <p>critical</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'2')" />
@@ -166,8 +166,8 @@
             <div class="alert-body-wrapper">
                 <p>Reentrancy in Vulnerability.withdraw(uint256) :<br>	External calls:<br>- &emsp; (result) = msg.sender.call{value: _amount}() <br>	State variables written after the call(s):<br>- &emsp; balances[msg.sender] -= _amount <br></p>
             </div>
-            <div class="impact-label CRITICAL">
-                <p>CRITICAL</p>
+            <div class="impact-label critical">
+                <p>critical</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'3')" />
@@ -187,8 +187,8 @@
             <div class="alert-body-wrapper">
                 <p>Vulnerability.kill()  allows anyone to destruct the contract<br></p>
             </div>
-            <div class="impact-label CRITICAL">
-                <p>CRITICAL</p>
+            <div class="impact-label critical">
+                <p>critical</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'4')" />
@@ -208,8 +208,8 @@
             <div class="alert-body-wrapper">
                 <p>Vulnerability.USDCTransfer(address,address,uint256)  ignores return value by IERC20(USDC).transferFrom(_from,_to,_amount) <br></p>
             </div>
-            <div class="impact-label CRITICAL">
-                <p>CRITICAL</p>
+            <div class="impact-label critical">
+                <p>critical</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'5')" />
@@ -229,8 +229,8 @@
             <div class="alert-body-wrapper">
                 <p>Vulnerability.divideBeforeMultiply(uint256,uint256,uint256)  performs a multiplication on the result of a division:<br>- &emsp;amt = (a / b) * c <br></p>
             </div>
-            <div class="impact-label MEDIUM">
-                <p>MEDIUM</p>
+            <div class="impact-label medium">
+                <p>medium</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'6')" />
@@ -250,8 +250,8 @@
             <div class="alert-body-wrapper">
                 <p>Vulnerability.fund_reached()  uses a dangerous strict equality:<br>- &emsp; address(this).balance == 100000000000000000000 <br></p>
             </div>
-            <div class="impact-label MEDIUM">
-                <p>MEDIUM</p>
+            <div class="impact-label medium">
+                <p>medium</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'7')" />
@@ -271,8 +271,8 @@
             <div class="alert-body-wrapper">
                 <p>Vulnerability.txOriginExploit(uint256)  uses tx.origin for authorization: require(bool)(tx.origin == owner) <br></p>
             </div>
-            <div class="impact-label MEDIUM">
-                <p>MEDIUM</p>
+            <div class="impact-label medium">
+                <p>medium</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'8')" />
@@ -292,8 +292,8 @@
             <div class="alert-body-wrapper">
                 <p>Vulnerability.transferMoney().to  is a local variable never initialized<br></p>
             </div>
-            <div class="impact-label MEDIUM">
-                <p>MEDIUM</p>
+            <div class="impact-label medium">
+                <p>medium</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'9')" />
@@ -313,8 +313,8 @@
             <div class="alert-body-wrapper">
                 <p>Vulnerability.delegate(address,bytes)._to  lacks a zero-check on :<br>	- &emsp; (result) = _to.delegatecall(_data) <br></p>
             </div>
-            <div class="impact-label SUGESTION">
-                <p>SUGESTION</p>
+            <div class="impact-label suggestion">
+                <p>suggestion</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'10')" />
@@ -334,8 +334,8 @@
             <div class="alert-body-wrapper">
                 <p>Pragma version^0.8.9  necessitates a version too recent to be trusted. Consider deploying with 0.6.12/0.7.6<br>solc-0.8.19 is not recommended for deployment<br></p>
             </div>
-            <div class="impact-label SUGESTION">
-                <p>SUGESTION</p>
+            <div class="impact-label suggestion">
+                <p>suggestion</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'11')" />
@@ -355,8 +355,8 @@
             <div class="alert-body-wrapper">
                 <p>Low level call in Vulnerability.delegate(address,bytes) :<br>- &emsp; (result) = _to.delegatecall(_data) <br>Low level call in Vulnerability.withdraw(uint256) :<br>- &emsp; (result) = msg.sender.call{value: _amount}() <br>Low level call in Vulnerability.transferMoney() :<br>- &emsp; (result) = to.call{value: address(this).balance}() <br></p>
             </div>
-            <div class="impact-label SUGESTION">
-                <p>SUGESTION</p>
+            <div class="impact-label suggestion">
+                <p>suggestion</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'12')" />
@@ -376,8 +376,8 @@
             <div class="alert-body-wrapper">
                 <p>Function Vulnerability.fund_reached()  is not in mixedCase<br>Function Vulnerability.USDCTransfer(address,address,uint256)  is not in mixedCase<br>Parameter Vulnerability.USDCTransfer(address,address,uint256)._from  is not in mixedCase<br>Parameter Vulnerability.USDCTransfer(address,address,uint256)._to  is not in mixedCase<br>Parameter Vulnerability.USDCTransfer(address,address,uint256)._amount  is not in mixedCase<br>Parameter Vulnerability.delegate(address,bytes)._to  is not in mixedCase<br>Parameter Vulnerability.delegate(address,bytes)._data  is not in mixedCase<br>Parameter Vulnerability.withdraw(uint256)._amount  is not in mixedCase<br>Parameter Vulnerability.txOriginExploit(uint256)._amount  is not in mixedCase<br>Variable Vulnerability.USDC  is not in mixedCase<br></p>
             </div>
-            <div class="impact-label SUGESTION">
-                <p>SUGESTION</p>
+            <div class="impact-label suggestion">
+                <p>suggestion</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'13')" />
@@ -397,8 +397,8 @@
             <div class="alert-body-wrapper">
                 <p>Vulnerability.USDC  should be constant<br></p>
             </div>
-            <div class="impact-label SUGESTION">
-                <p>SUGESTION</p>
+            <div class="impact-label suggestion">
+                <p>suggestion</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'14')" />
@@ -418,8 +418,8 @@
             <div class="alert-body-wrapper">
                 <p>fund_reached() should be declared external:<br>- &emsp; Vulnerability.fund_reached() <br>USDCTransfer(address,address,uint256) should be declared external:<br>- &emsp; Vulnerability.USDCTransfer(address,address,uint256) <br>kill() should be declared external:<br>- &emsp; Vulnerability.kill() <br>delegate(address,bytes) should be declared external:<br>- &emsp; Vulnerability.delegate(address,bytes) <br>divideBeforeMultiply(uint256,uint256,uint256) should be declared external:<br>- &emsp; Vulnerability.divideBeforeMultiply(uint256,uint256,uint256) <br>txOriginExploit(uint256) should be declared external:<br>- &emsp; Vulnerability.txOriginExploit(uint256) <br>transferMoney() should be declared external:<br>- &emsp; Vulnerability.transferMoney() <br>f() should be declared external:<br>- &emsp; Vulnerability.f() <br></p>
             </div>
-            <div class="impact-label SUGESTION">
-                <p>SUGESTION</p>
+            <div class="impact-label suggestion">
+                <p>suggestion</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'15')" />

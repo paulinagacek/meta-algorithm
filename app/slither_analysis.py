@@ -55,9 +55,9 @@ def get_vulnerabilities(varnabilities_str: str):
     varnabilities_str = re.sub('\n', '<br>', varnabilities_str)
     varnabilities_str = re.sub('\t-', '- &emsp;', varnabilities_str)
     
-    varnabilities_str = re.sub('\\x1b\[91m<br>', '***(CRITICAL)', varnabilities_str)
-    varnabilities_str = re.sub('\\x1b\[92m<br>', '***(SUGESTION)', varnabilities_str)
-    varnabilities_str = re.sub('\\x1b\[93m<br>', '***(MEDIUM)', varnabilities_str)
+    varnabilities_str = re.sub('\\x1b\[91m<br>', '***(critical)', varnabilities_str)
+    varnabilities_str = re.sub('\\x1b\[92m<br>', '***(suggestion)', varnabilities_str)
+    varnabilities_str = re.sub('\\x1b\[93m<br>', '***(medium)', varnabilities_str)
 
     vulnerabilities = varnabilities_str.split('***')[1:]
 

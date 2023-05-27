@@ -11,5 +11,9 @@
             <h4>{{stat.name}}: {{stat.number_of_occurence}}</h4>
         {% endif %}
     {% endfor %}
+    <h2>Vulnerabilities detected by slither</h2>
+    {% for key, val in vur_stats.items() %}
+        <h4>{{key}}: {{val}}</h4>
+    {% endfor %}
 </main>
 {% endblock content %}

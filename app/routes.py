@@ -41,15 +41,18 @@ async def home_get(request: Request):
     with open(parent_dir_path + '/temp/warnings.pickle', 'rb') as handle:
         warnings = pickle.load(handle)
     
+    vur_stats = {"critical": 0, "medium":0, "suggestion": 0}
     with open(parent_dir_path + '/temp/vulnerabilities.pickle', 'rb') as handle:
         vulnerabilities = pickle.load(handle)
+        for vur in vulnerabilities:
+            vur_stats[vur.impact]+=1
     
     stats = {
         Stats("Warnings", len(warnings)),
         Stats("Vulnerabilities dettected by slither", len(vulnerabilities))
     }
-    
-    return templates.TemplateResponse("index.html", {"request": request, "nav_bar": get_navbar('Home'), "stats": stats})
+
+    return templates.TemplateResponse("index.html", {"request": request, "nav_bar": get_navbar('Home'), "stats": stats, "vur_stats": vur_stats})
 
 @router.get("/warnings", response_class=HTMLResponse)
 async def warnings_get(request: Request):

@@ -42,7 +42,7 @@
 {% block content%}
 <main>
     {% if warnings %}
-    <h2>Warnings</h2>
+    <h2 class="sticky-h2">Warnings</h2>
     <section class="alerts-list-wrapper">
         {% for warning in warnings %}
         <div class="alert-container" id="war-{{warning.id}}">
