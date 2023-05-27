@@ -25,14 +25,14 @@
             for (const id of closedVurIds) {
                 const elem = document.querySelector("#vur-" + id);
                 elem.classList.add(hiddenalertClassName);
-                elem.childNodes[5].childNodes[1].checked = true
+                elem.childNodes[7].childNodes[1].checked = true
             }
         }
     }
 
     window.onload = loadLocalStorage;
 
-    function doAlert(checkboxElem, warningId) {
+    function onCheckBoxChangeVulnerabilities(checkboxElem, warningId) {
         if (checkboxElem.checked) {
             closedVurIds.push(warningId);
             checkboxElem.parentElement.parentElement.classList.add(hiddenalertClassName);
@@ -107,7 +107,7 @@
                 <p>critical</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'0')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'0')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#modifying-storage-array-by-value[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -128,7 +128,7 @@
                 <p>critical</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'1')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'1')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -149,7 +149,7 @@
                 <p>critical</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'2')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'2')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#controlled-delegatecall[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -170,7 +170,7 @@
                 <p>critical</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'3')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'3')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -191,7 +191,7 @@
                 <p>critical</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'4')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'4')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#suicidal[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -212,7 +212,7 @@
                 <p>critical</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'5')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'5')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -233,7 +233,7 @@
                 <p>medium</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'6')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'6')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -254,7 +254,7 @@
                 <p>medium</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'7')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'7')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -275,7 +275,7 @@
                 <p>medium</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'8')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'8')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-usage-of-txorigin[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -296,7 +296,7 @@
                 <p>medium</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'9')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'9')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -317,7 +317,7 @@
                 <p>suggestion</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'10')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'10')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -338,7 +338,7 @@
                 <p>suggestion</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'11')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'11')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -359,7 +359,7 @@
                 <p>suggestion</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'12')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'12')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -380,7 +380,7 @@
                 <p>suggestion</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'13')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'13')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -401,7 +401,7 @@
                 <p>suggestion</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'14')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'14')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant[0m class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
@@ -422,7 +422,7 @@
                 <p>suggestion</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'15')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'15')" />
                 <a href=https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external[0m./example_contracts/slither_vur.sol analyzed (2 contracts with 75 detectors), 35 result(s) found class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all

@@ -13,14 +13,14 @@
             for (const id of closedVurIds) {
                 const elem = document.querySelector("#vur-" + id);
                 elem.classList.add(hiddenalertClassName);
-                elem.childNodes[5].childNodes[1].checked = true
+                elem.childNodes[7].childNodes[1].checked = true
             }
         }
     }
 
     window.onload = loadLocalStorage;
 
-    function doAlert(checkboxElem, warningId) {
+    function onCheckBoxChangeVulnerabilities(checkboxElem, warningId) {
         if (checkboxElem.checked) {
             closedVurIds.push(warningId);
             checkboxElem.parentElement.parentElement.classList.add(hiddenalertClassName);
@@ -56,7 +56,7 @@
                 <p>{{vur.impact}}</p>
             </div>
             <div class="alert-bin-wrapper">
-                <input type="checkbox" onchange="doAlert(this,'{{vur.id}}')" />
+                <input type="checkbox" onchange="onCheckBoxChangeVulnerabilities(this,'{{vur.id}}')" />
                 <a href={{vur.reference}} class="reference-link">
                     <div class="material-symbols-outlined">
                         quick_reference_all
