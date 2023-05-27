@@ -47,12 +47,19 @@ def extract_vulnerabilities_str(entire_log: str) -> str:
     else:
         return ''
 
+def deleteFileInfo(vur: str) -> str:
+    return re.sub('\([^\(\)#]+#\d*(-\d*)?\)', '', vur)
+
 
 def get_vulnerabilities(varnabilities_str: str):
     varnabilities_str = re.sub('\n', '<br>', varnabilities_str)
     varnabilities_str = re.sub('\t-', '- &emsp;', varnabilities_str)
-    varnabilities_str = re.sub('\\x1b\[(91|92|0)m', '', varnabilities_str)
-    vulnerabilities = varnabilities_str.split('<br><br>')
+    
+    varnabilities_str = re.sub('\\x1b\[91m<br>', '***(CRITICAL)', varnabilities_str)
+    varnabilities_str = re.sub('\\x1b\[92m<br>', '***(SUGESTION)', varnabilities_str)
+    varnabilities_str = re.sub('\\x1b\[93m<br>', '***(MEDIUM)', varnabilities_str)
+
+    vulnerabilities = varnabilities_str.split('***')[1:]
 
     if vulnerabilities:
         vulnerabilities[0] = re.sub('^<br>', '', vulnerabilities[0])
@@ -61,7 +68,8 @@ def get_vulnerabilities(varnabilities_str: str):
     for idx, vur in enumerate(vulnerabilities):
         content, reference = vur.split('Reference: ', 1)[:2]
         reference = re.sub('<br>', '', reference)
-        vur_objects.append(Vulnerability(id=idx, name=content, reference=reference))
+        impact, content = deleteFileInfo(content).split(")", 1)
+        vur_objects.append(Vulnerability(id=idx, name=content, impact=impact[1:], reference=reference))
 
     return vur_objects
 

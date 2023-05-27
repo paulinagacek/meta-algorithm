@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block style %}
-    <link rel="stylesheet" href="/static/vulnerabilities.css">
+<link rel="stylesheet" href="/static/vulnerabilities.css">
 {% endblock %}
 {% block script %}
 <script>
@@ -8,8 +8,8 @@
     const hiddenalertClassName = "alert-hidden";
 
     function loadLocalStorage() {
-        if (localStorage.getItem("closedVurIds") != null) {
-            closedVurIds = JSON.parse(localStorage.getItem("closedVurIds"));
+        if (sessionStorage.getItem("closedVurIds") != null) {
+            closedVurIds = JSON.parse(sessionStorage.getItem("closedVurIds"));
             for (const id of closedVurIds) {
                 const elem = document.querySelector("#vur-" + id);
                 elem.classList.add(hiddenalertClassName);
@@ -24,16 +24,16 @@
         if (checkboxElem.checked) {
             closedVurIds.push(warningId);
             checkboxElem.parentElement.parentElement.classList.add(hiddenalertClassName);
-            localStorage.setItem("closedVurIds", JSON.stringify(closedVurIds));
+            sessionStorage.setItem("closedVurIds", JSON.stringify(closedVurIds));
         } else {
-            closedVurIds = JSON.parse(localStorage.getItem("closedVurIds"));
+            closedVurIds = JSON.parse(sessionStorage.getItem("closedVurIds"));
             var index = closedVurIds.indexOf(warningId);
             if (index > -1) {
                 closedVurIds.splice(index, 1);
             }
             console.log(closedVurIds);
             checkboxElem.parentElement.parentElement.classList.remove(hiddenalertClassName);
-            localStorage.setItem("closedVurIds", JSON.stringify(closedVurIds));
+            sessionStorage.setItem("closedVurIds", JSON.stringify(closedVurIds));
         }
     }
 </script>
@@ -51,12 +51,17 @@
             </div>
             <div class="alert-body-wrapper">
                 <p>{{vur.name}}</p>
-                <a href={{vur.reference}}><button><span>Reference </span><span class="material-symbols-outlined">
-                    quick_reference_all
-                    </span></button></a>
+            </div>
+            <div class="impact-label {{vur.impact}}">
+                <p>{{vur.impact}}</p>
             </div>
             <div class="alert-bin-wrapper">
                 <input type="checkbox" onchange="doAlert(this,'{{vur.id}}')" />
+                <a href={{vur.reference}} class="reference-link">
+                    <div class="material-symbols-outlined">
+                        quick_reference_all
+                    </div>
+                </a>
             </div>
         </div>
         {% endfor %}

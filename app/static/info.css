@@ -6,3 +6,7 @@ article{
 li{
     margin-inline: 10%;
 }
+
+h3.tool{
+    margin-block: 16px;
+}

@@ -12,10 +12,11 @@ class Warning:
         return f'({self.name}, Line:{str(self.line)},\nCode: {self.code_str})\n'
 
 class Vulnerability:
-    def __init__(self, id, name, reference=None) -> None:
+    def __init__(self, id, name, impact, reference=None) -> None:
         self.id = id
         self.name = name
         self.reference = reference
+        self.impact = impact
     
     def __str__(self):
         return f'{self.name}\nReference:{str(self.reference)}\n'

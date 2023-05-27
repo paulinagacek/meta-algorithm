@@ -8,8 +8,8 @@
     const hiddenalertClassName = "alert-hidden";
 
     function loadLocalStorage() {
-        if (localStorage.getItem("closedWarningsIds") != null) {
-            closedWarningsIds = JSON.parse(localStorage.getItem("closedWarningsIds"));
+        if (sessionStorage.getItem("closedWarningsIds") != null) {
+            closedWarningsIds = JSON.parse(sessionStorage.getItem("closedWarningsIds"));
             for (const id of closedWarningsIds) {
                 const elem = document.querySelector("#war-" + id);
                 elem.classList.add(hiddenalertClassName);
@@ -25,16 +25,16 @@
         if (checkboxElem.checked) {
             closedWarningsIds.push(warningId);
             checkboxElem.parentElement.parentElement.classList.add(hiddenalertClassName);
-            localStorage.setItem("closedWarningsIds", JSON.stringify(closedWarningsIds));
+            sessionStorage.setItem("closedWarningsIds", JSON.stringify(closedWarningsIds));
         } else {
-            closedWarningsIds = JSON.parse(localStorage.getItem("closedWarningsIds"));
+            closedWarningsIds = JSON.parse(sessionStorage.getItem("closedWarningsIds"));
             var index = closedWarningsIds.indexOf(warningId);
             if (index > -1) {
                 closedWarningsIds.splice(index, 1);
             }
             console.log(closedWarningsIds);
             checkboxElem.parentElement.parentElement.classList.remove(hiddenalertClassName);
-            localStorage.setItem("closedWarningsIds", JSON.stringify(closedWarningsIds));
+            sessionStorage.setItem("closedWarningsIds", JSON.stringify(closedWarningsIds));
         }
     }
 </script>
