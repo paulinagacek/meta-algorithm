@@ -1,7 +1,13 @@
-main-content{
+main-content {
     padding-block: 64px;
 }
 
-li{
+li {
     margin-inline: 32px;
+}
+
+code {
+    white-space: pre-wrap;
+    display: block;
+    background-color: #eee;
 }

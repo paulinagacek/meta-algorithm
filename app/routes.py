@@ -85,7 +85,9 @@ async def symbolic_exec_get(request: Request):
 
 @router.get("/fuzzing", response_class=HTMLResponse)
 async def symbolic_exec_get(request: Request):
-    return templates.TemplateResponse("echidna.html", {"request": request, "nav_bar": get_navbar('Fuzzing')})
+    with open(parent_dir_path + '/temp/fuzzing_log.pickle', 'rb') as handle:
+        fuzzing_log = pickle.load(handle)
+    return templates.TemplateResponse("echidna.html", {"request": request, "nav_bar": get_navbar('Fuzzing'), "fuzzing_log": fuzzing_log})
 
 @router.get("/info", response_class=HTMLResponse)
 async def info_get(request: Request):

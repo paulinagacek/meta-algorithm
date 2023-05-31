@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block style %}
 <link rel="stylesheet" href="/static/fuzzing.css">
+<!-- <style> code { white-space: pre-wrap; display: block; background-color: #eee; }.executed { background-color: #afa; }.reverted { background-color: #ffa; }.unexecuted { background-color: #faa; }.neutral { background-color: #eee; }</style> -->
 {% endblock %}
 
 {% block content%}
 <main>
-    <h2>Fuzzing with Echidna</h2>
+    <h2>Fuzzing with <a href="https://github.com/crytic/echidna">Echidna</a></h2>
     <article>
         <p>
             Echidna properties are Solidity functions. A property must:
@@ -37,5 +38,8 @@
             </li>
         </ul>
     </article>
+    <code>
+        {{ fuzzing_log }}
+    </code>
 </main>
 {% endblock content %}
