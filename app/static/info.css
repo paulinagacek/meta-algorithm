@@ -10,3 +10,7 @@ li{
 h3.tool{
     margin-block: 16px;
 }
+
+main-content{
+    padding-block: 64px;
+}

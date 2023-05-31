@@ -42,7 +42,22 @@ Below you will find some guidence how to set up your environment for both paths.
     solc-select use 0.8.19
 ```
 
-5. Run
+5. Install brew
+
+```bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+    test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bash_profile
+    echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile
+```
+
+6. Install echidna
+```bash
+    brew install echidna
+```
+
+7. Run
 ```bash
     source .venv/bin/activate
     python app/slither_analysis.py 

@@ -1,3 +1,7 @@
 main-content{
     padding-block: 64px;
 }
+
+li{
+    margin-inline: 32px;
+}

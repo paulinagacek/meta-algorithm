@@ -16,33 +16,63 @@
     <h2>Why do we need meta analysis?</h2>
     <p>Once you deploy a smart contract to the blockchain it is immutable, so all bugs has to be detected beforehand.
     </p>
-    <p>There are numerous tools created for such analysis, but no tool can catch 100% vulnerabilities and that's why we have integrated 3 of them into one powerful meta analysis tool</p>
+    <p>There are numerous tools created for such analysis, but no tool can catch 100% vulnerabilities and that's why we
+        have integrated 3 of them into one powerful meta analysis tool</p>
 
     <h2>Tools used in meta analysis</h2>
     <h3 class="tool">Slither</h3>
     <p>
-        Slither is an open-source smart contract static analysis tool that statically analyses the code. 
-        
-        Slither takes Solidity Abstract Syntax Tree(AST) developed by Solidity Compiler from the source code as input. 
-        
+        Slither is an open-source smart contract static analysis tool that statically analyses the code.
+
+        Slither takes Solidity Abstract Syntax Tree(AST) developed by Solidity Compiler from the source code as input.
+
         Slither tool consists of a set of detectors to detect the vulnerabilities in the contract.
     </p>
 
     <h3 class="tool">Manticore</h3>
-    <p>Echidna is designed for fuzzing/property-based testing and developed in Haskell programming language. Fuzzing is
-        a technique that includes generating random inputs and makes it easy to automatically generate tests to detect
-        violations in assertions and custom properties.</p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore cumque possimus in harum repellat temporibus culpa earum cupiditate voluptatem eveniet tenetur, non, suscipit quibusdam. Quo ab nihil, repellendus labore corrupti voluptas, debitis tempora mollitia recusandae itaque veritatis dolorum? Eligendi quas nesciunt molestiae ut obcaecati tempore iure! Cupiditate quod tenetur error.
+    </p>
 
     <h3 class="tool">Echidna</h3>
-    <p>Echidna is designed for fuzzing/property-based testing and developed in Haskell programming language. Fuzzing is
+    <p>
+        Echidna is designed for fuzzing/property-based testing and developed in Haskell programming language. Fuzzing is
         a technique that includes generating random inputs and makes it easy to automatically generate tests to detect
-        violations in assertions and custom properties.</p>
+        violations in assertions and custom properties.
+    </p>
+    <p>
+        The core Echidna functionality is an executable called echidna, which takes a contract and a list of invariants (properties that should always remain true) as input. For each invariant, it generates random sequences of calls to the contract and checks if the invariant holds. If it can find some way to falsify the invariant, it prints the call sequence that does so. If it can't, you have some assurance the contract is safe.
+        Invariants are expressed as Solidity functions with names that begin with echidna_, have no arguments, and return a boolean. 
+    </p>
+    <p>
+        In smart contracts, invariants are Solidity functions that can represent any incorrect or invalid state that the contract can reach, including:
+        <ul>
+            <li>
+                Incorrect access control: the attacker became the owner of the contract.
+            </li>
+            <li>
+                Incorrect state machine: the tokens can be transferred while the contract is paused.
+            </li>
+            <li>
+                Incorrect arithmetic: the user can underflow its balance and get unlimited free tokens.
+            </li>
+        </ul>
+    </p>
 
     <h2>Recommended resources:</h2>
     <ul>
         <li>
             <a href="https://www.youtube.com/watch?v=fln_HPA2uOM&t=1473s">How to Hack Smart Contracts With Slither &
                 Echinda</a>
+        </li>
+        <li>
+            <a href="https://www.youtube.com/watch?v=IOUnhCTw6tE">Advanced Smart Contract Hacking</a>
+        </li>
+        <li>
+            <a href="https://solidity-by-example.org/tests/echidna/">Solidity by example - Echidna</a>
+        </li>
+        <li>
+            <a href="https://github.com/crytic/building-secure-contracts/tree/master/program-analysis/echidna#echidna-tutorial">Echidna tutorial</a>
         </li>
     </ul>
 </article>

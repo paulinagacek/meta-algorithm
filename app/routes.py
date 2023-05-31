@@ -18,6 +18,7 @@ nav_bar = [
     NavbarItem('Warnings', '/warnings', False, "warning"),
     NavbarItem('Vulnerabilities', '/vulnerabilities', False, "bug_report"),
     NavbarItem('Symbolic Execution', '/symbolic-exec', False, "bolt"),
+    NavbarItem('Fuzzing', '/fuzzing', False, "quiz"),
     NavbarItem('Info', '/info', False, "info"),
 ]
 
@@ -80,7 +81,11 @@ async def vulnerabilities_get(request: Request):
 
 @router.get("/symbolic-exec", response_class=HTMLResponse)
 async def symbolic_exec_get(request: Request):
-    return templates.TemplateResponse("symbolic_execution.html", {"request": request, "nav_bar": get_navbar('Vulnerabilities')})
+    return templates.TemplateResponse("symbolic_execution.html", {"request": request, "nav_bar": get_navbar('Symbolic Execution')})
+
+@router.get("/fuzzing", response_class=HTMLResponse)
+async def symbolic_exec_get(request: Request):
+    return templates.TemplateResponse("echidna.html", {"request": request, "nav_bar": get_navbar('Fuzzing')})
 
 @router.get("/info", response_class=HTMLResponse)
 async def info_get(request: Request):

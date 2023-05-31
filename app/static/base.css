@@ -34,7 +34,7 @@ h2 {
   padding-block: 1rem;
 }
 
-p {
+p, li {
   font-size: 0.8rem;
   line-height: 1.7rem;
   color: var(--black);

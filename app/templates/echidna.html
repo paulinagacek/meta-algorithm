@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block style %}
+<link rel="stylesheet" href="/static/fuzzing.css">
+{% endblock %}
+
+{% block content%}
+<main>
+    <h2>Fuzzing with Echidna</h2>
+    <article>
+        <p>
+            Echidna properties are Solidity functions. A property must:
+        </p>
+        <ul>
+            <li>
+                Have no argument
+            </li>
+            <li>
+                Return true if it is successful
+            </li>
+            <li>
+                Have its name starting with echidna
+            </li>
+        </ul>
+        <p>Echidna will:</p>
+
+        <ul>
+            <li>
+                Automatically generate arbitrary transactions to test the property.
+            </li>
+            <li>
+                Report any transactions leading a property to return false or throw an error.
+            </li>
+            <li>
+                Discard side-effects when calling a property (i.e. if the property changes a state variable, it is
+                discarded
+                after the test)
+            </li>
+        </ul>
+    </article>
+</main>
+{% endblock content %}
