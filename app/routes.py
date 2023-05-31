@@ -87,7 +87,10 @@ async def symbolic_exec_get(request: Request):
 async def symbolic_exec_get(request: Request):
     with open(parent_dir_path + '/temp/fuzzing_log.pickle', 'rb') as handle:
         fuzzing_log = pickle.load(handle)
-    return templates.TemplateResponse("echidna.html", {"request": request, "nav_bar": get_navbar('Fuzzing'), "fuzzing_log": fuzzing_log})
+    
+    with open(parent_dir_path + '/temp/code_coverage.pickle', 'rb') as handle:
+        code_coverage = pickle.load(handle)
+    return templates.TemplateResponse("echidna.html", {"request": request, "nav_bar": get_navbar('Fuzzing'), "fuzzing_log": fuzzing_log, "code_coverage": code_coverage})
 
 @router.get("/info", response_class=HTMLResponse)
 async def info_get(request: Request):

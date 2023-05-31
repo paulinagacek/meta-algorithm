@@ -61,6 +61,7 @@ Below you will find some guidence how to set up your environment for both paths.
 ```bash
     source .venv/bin/activate
     python app/slither_analysis.py 
+    python app/echidna_analysis.py
     uvicorn app.main:app
 ```
 
