@@ -161,6 +161,7 @@ section.alerts-list-wrapper::-webkit-scrollbar-thumb {
 .alert-icon-wrapper,
 .alert-bin-wrapper {
   width: 64px;
+  min-width: 64px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -203,6 +204,20 @@ section.alerts-list-wrapper::-webkit-scrollbar-thumb {
   height: 60px;
   overflow: hidden;
   opacity: 0.5;
+  max-width: 100%;
+}
+
+.alert-hidden>.alert-body-wrapper{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  height: 30px;
+}
+
+.alert-hidden>.alert-body-wrapper>p{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  height: 30px;
+  white-space: nowrap;
 }
 
 a{

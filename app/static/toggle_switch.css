@@ -8,7 +8,7 @@
     width: 100%;
 }
 
-label {
+label.toggle-label{
     position: absolute;
     left: 16px;
     top: 16px;

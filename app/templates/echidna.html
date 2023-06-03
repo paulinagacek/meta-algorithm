@@ -1,48 +1,90 @@
 {% extends 'base.html' %}
 {% block style %}
 <link rel="stylesheet" href="/static/fuzzing.css">
-<!-- <style> code { white-space: pre-wrap; display: block; background-color: #eee; }.executed { background-color: #afa; }.reverted { background-color: #ffa; }.unexecuted { background-color: #faa; }.neutral { background-color: #eee; }</style> -->
 {% endblock %}
 
 {% block content%}
 <main>
     <h2>Fuzzing with <a href="https://github.com/crytic/echidna">Echidna</a></h2>
-    <article>
-        <p>
-            Echidna properties are Solidity functions. A property must:
-        </p>
-        <ul>
-            <li>
-                Have no argument
-            </li>
-            <li>
-                Return true if it is successful
-            </li>
-            <li>
-                Have its name starting with echidna
-            </li>
-        </ul>
-        <p>Echidna will:</p>
+    <div class="toggle-list">
+        <div class="toggle-header">
+            <div class="info-wrapper">
+                <span class="material-symbols-outlined">tips_and_updates
+                </span>
+                <h3> How to write echidna tests?</h3>
+            </div>
+            <input type="checkbox" name="show" id="show-1">
+            <label for="show-1">
+                <span class="material-symbols-outlined"></span>
+            </label>
+        </div>
+        <div class="hidden-content">
+            <article>
+                <p>
+                    Echidna properties are Solidity functions. A property must:
+                </p>
+                <ul>
+                    <li>
+                        Have no argument
+                    </li>
+                    <li>
+                        Return true if it is successful
+                    </li>
+                    <li>
+                        Have its name starting with echidna
+                    </li>
+                </ul>
+                <p>Echidna will:</p>
 
-        <ul>
-            <li>
-                Automatically generate arbitrary transactions to test the property.
-            </li>
-            <li>
-                Report any transactions leading a property to return false or throw an error.
-            </li>
-            <li>
-                Discard side-effects when calling a property (i.e. if the property changes a state variable, it is
-                discarded
-                after the test)
-            </li>
-        </ul>
-    </article>
-    <code>
-        {{ fuzzing_log }}
-    </code>
-    <section>
-        {{ code_coverage|safe }}
-    </section>
+                <ul>
+                    <li>
+                        Automatically generate arbitrary transactions to test the property.
+                    </li>
+                    <li>
+                        Report any transactions leading a property to return false or throw an error.
+                    </li>
+                    <li>
+                        Discard side-effects when calling a property (i.e. if the property changes a state variable, it
+                        is
+                        discarded
+                        after the test)
+                    </li>
+                </ul>
+            </article>
+        </div>
+    </div>
+
+    <div class="toggle-list">
+        <div class="toggle-header">
+            <h3>Fuzzing results</h3>
+            <input type="checkbox" name="show" id="show-2" checked>
+            <label for="show-2">
+                <span class="material-symbols-outlined">
+                </span>
+            </label>
+        </div>
+        <div class="hidden-content">
+            <code>
+                {{ fuzzing_log }}
+            </code>
+        </div>
+    </div>
+
+    <div class="toggle-list">
+        <div class="toggle-header">
+            <h3>Code coverage</h3>
+            <input type="checkbox" name="show" id="show-3" checked>
+            <label for="show-3">
+                <span class="material-symbols-outlined">
+                </span>
+            </label>
+        </div>
+        <div class="hidden-content">
+            <section>
+                {{ code_coverage|safe }}
+            </section>
+        </div>
+    </div>
+
 </main>
 {% endblock content %}

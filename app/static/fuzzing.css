@@ -9,5 +9,57 @@ li {
 code {
     white-space: pre-wrap;
     display: block;
-    background-color: #eee;
+    background-color: white !important;
+}
+
+.toggle-list{
+    border-radius: 16px;
+    padding-inline: 2rem;
+    margin-bottom: 16px;
+    background-color: var(--light-purle);
+}
+
+.toggle-header{
+    padding-block: 0.75rem;
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.toggle-header:has(input:checked) +.hidden-content{
+    display: block;
+}
+
+.toggle-header:not(:has(input:checked)) +.hidden-content{
+    display: none;
+}
+
+.toggle-header>input {
+    display: none;
+}
+
+.toggle-header>label:hover {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.toggle-header:has(input:checked)>label>span:before{
+    content: "expand_less";
+}
+
+.toggle-header:not(:has(input:checked))>label>span:before{
+    content: "expand_more";
+}
+
+.hidden-content{
+    padding-block: 16px;
 }
