@@ -3,17 +3,23 @@ from os import listdir
 from os.path import isfile, join
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+parent_dir_path = os.path.dirname(os.path.realpath(__file__))
+print(parent_dir_path)
 
 def analyse_echidna(file_name):
-    parent_dir_path = os.path.dirname(os.path.realpath(__file__))
     echidna_dir = parent_dir_path + '/temp/echidna'
     shutil.rmtree(echidna_dir)
-    cmd = ('echidna', file_name, '--corpus-dir', 'app/temp/echidna')
+    cmd = ('echidna', file_name, '--corpus-dir', echidna_dir)
     p = subprocess.run(cmd, capture_output=True, text=True)
     fuzzing_log = p.stdout
+    print("Fuzzing:")
+    print(fuzzing_log, p.stderr)
+    print("---")
 
     with open(parent_dir_path + '/temp/fuzzing_log.pickle', 'wb') as handle:
         pickle.dump(fuzzing_log, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    
+    print(listdir('./example_contracts'))
     
     coverage_file_name = [f for f in listdir(echidna_dir) if isfile(join(echidna_dir, f)) and f[-4:]=="html"][0]
 
@@ -25,4 +31,4 @@ def analyse_echidna(file_name):
             pickle.dump(code_coverage, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 if __name__ == '__main__':
-    analyse_echidna(file_name= r'./example_contracts/echidna2.sol')
+    analyse_echidna('./example_contracts/echidna2.sol')
