@@ -5,3 +5,4 @@ mcore_*
 *.pickle
 temp/echidna
 crytic-export
+app/temp

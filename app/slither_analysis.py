@@ -86,11 +86,14 @@ def analyse_slither(file_name):
     vulnerabilities = get_vulnerabilities(vulnerabilities_str)
 
     parent_dir_path = os.path.dirname(os.path.realpath(__file__))
+    temp_dir = os.path.join(parent_dir_path, 'temp')
+    if not os.path.exists(temp_dir):
+        os.mkdir(temp_dir)
 
-    with open(parent_dir_path + '/temp/warnings.pickle', 'wb') as handle:
+    with open(os.path.join(temp_dir, 'warnings.pickle'), 'wb') as handle:
         pickle.dump(warnings, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-    with open(parent_dir_path + '/temp/vulnerabilities.pickle', 'wb') as handle:
+    with open(os.path.join(temp_dir, 'vulnerabilities.pickle'), 'wb') as handle:
         pickle.dump(vulnerabilities, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 if __name__ == '__main__':
