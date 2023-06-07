@@ -70,4 +70,26 @@
     <h2>Congrats! There are no warnings.</h2>
     {% endif %}
 </main>
+<script>
+    const cards = document.querySelectorAll(".alert-container");
+    console.log('cards', cards);
+
+    const observer = new IntersectionObserver(
+        entries => {
+        entries.forEach(entry => {
+            entry.target.classList.toggle("show", entry.isIntersecting);
+            if (entry.isIntersecting){
+                observer.unobserve(entry.target);
+            }
+        }, 
+        {
+            threshold: 1,
+            rootMargin: "-200px",
+        })
+    });
+
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+</script>
 {% endblock content %}

@@ -12,10 +12,6 @@
   transition: scale 250ms ease-in-out;
 }
 
-.alert-body-wrapper p{
-  max-width: 95%;
-}
-
 .impact-label{
   padding-inline: 8px;
   margin-right: 16px;
@@ -43,15 +39,4 @@
 .impact-label p{
   color: white;
   font-weight: 600;
-}
-
-.alert-container{
-  opacity: 0;
-  transform: translateX(50px);
-  transition: 300ms ease-in-out;
-}
-
-.alert-container.show{
-  opacity: 1;
-  transform: translateX(0);
 }

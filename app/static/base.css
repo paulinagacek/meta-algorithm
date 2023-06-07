@@ -144,7 +144,7 @@ section.alerts-list-wrapper {
   overflow-y: scroll;
   min-height: 250px;
   scrollbar-width: thin;
-  scrollbar-color: var(--dark-purple) white;
+  scrollbar-color: var(--white) white;
   margin-top: 16px;
   max-width: 1000px;
 }
@@ -155,7 +155,7 @@ section.alerts-list-wrapper::-webkit-scrollbar {
 }
 
 section.alerts-list-wrapper::-webkit-scrollbar-thumb {
-  background-color: var(--middle-purple);
+  background-color: var(--white);
   border-radius: 16px;
 }
 
@@ -259,6 +259,21 @@ input[type="checkbox"]::before {
 
   transform-origin: bottom left;
   clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.alert-container{
+  opacity: 0;
+  transform: translateX(50px);
+  transition: 300ms ease-in-out;
+}
+
+.alert-container.show{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.alert-body-wrapper p{
+  max-width: 95%;
 }
 
 @media screen and (min-width: 1200px){
