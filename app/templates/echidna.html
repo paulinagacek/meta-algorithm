@@ -64,6 +64,11 @@
             </label>
         </div>
         <div class="hidden-content">
+            <section class="fuzzing-summary">
+                <h4>Passing: {{ echidna_stats.passing_nr }}</h4>
+                <h4>Failed: {{ echidna_stats.failed_nr }}</h4>
+            </section>
+
             <code>
                 {{ fuzzing_log }}
             </code>

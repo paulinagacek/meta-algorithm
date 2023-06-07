@@ -15,5 +15,8 @@
     {% for key, val in vur_stats.items() %}
         <h4>{{key}}: {{val}}</h4>
     {% endfor %}
+    <h2>Echidna test results</h2>
+    <h4>Passing: {{ echidna_stats.passing_nr }}</h4>
+    <h4>Failed: {{ echidna_stats.failed_nr }}</h4>
 </main>
 {% endblock content %}

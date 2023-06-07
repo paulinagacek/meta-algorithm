@@ -63,3 +63,9 @@ code {
 .hidden-content{
     padding-block: 16px;
 }
+
+.fuzzing-summary{
+    padding-bottom: 16px;
+    display: flex;
+    gap: 16px;
+}
