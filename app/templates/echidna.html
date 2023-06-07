@@ -83,6 +83,14 @@
             <section>
                 {{ code_coverage|safe }}
             </section>
+            <h4>Legend</h4>
+            <p> Our tool signals each execution trace in the corpus with the following "line marker":</p>
+            <ul>
+                <li><b>*</b> if an execution ended with a STOP</li>
+                <li><b>r</b> if an execution ended with a REVERT</li>
+                <li><b>o</b> if an execution ended with an out-of-gas error</li>
+                <li><b>e</b> if an execution ended with any other error (zero division, assertion failure, etc)</li>
+            </ul>
         </div>
     </div>
 

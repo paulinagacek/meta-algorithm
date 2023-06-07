@@ -12,14 +12,9 @@ def analyse_echidna(file_name):
     cmd = ('echidna', file_name, '--corpus-dir', echidna_dir)
     p = subprocess.run(cmd, capture_output=True, text=True)
     fuzzing_log = p.stdout
-    print("Fuzzing:")
-    print(fuzzing_log, p.stderr)
-    print("---")
 
     with open(parent_dir_path + '/temp/fuzzing_log.pickle', 'wb') as handle:
         pickle.dump(fuzzing_log, handle, protocol=pickle.HIGHEST_PROTOCOL)
-    
-    print(listdir('./example_contracts'))
     
     coverage_file_name = [f for f in listdir(echidna_dir) if isfile(join(echidna_dir, f)) and f[-4:]=="html"][0]
 

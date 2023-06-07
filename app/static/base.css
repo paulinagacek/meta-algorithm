@@ -50,14 +50,14 @@ body {
 }
 
 side-navbar {
-  width: clamp(340px, 24%, 400px);
+  width: clamp(400px, 24%, 500px);
   background-color: var(--middle-purple);
   padding-inline: 48px;
 }
 
 main-content {
   width: 100%;
-  padding-inline: min(80px, 10%);
+  padding-left: min(80px, 10%);
   background-color: white;
   color: var(--black);
   overflow-y: scroll;
@@ -146,6 +146,7 @@ section.alerts-list-wrapper {
   scrollbar-width: thin;
   scrollbar-color: var(--dark-purple) white;
   margin-top: 16px;
+  max-width: 1000px;
 }
 
 section.alerts-list-wrapper::-webkit-scrollbar {
@@ -258,4 +259,16 @@ input[type="checkbox"]::before {
 
   transform-origin: bottom left;
   clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+@media screen and (min-width: 1200px){
+  side-navbar {
+    width: clamp(360px, 28%, 600px);
+    padding-inline: clamp(64px, 8%, 80px);
+  }
+
+  main-content {
+    width: 70%;
+    padding-left: clamp(64px, 8%, 180px);;
+  }
 }
