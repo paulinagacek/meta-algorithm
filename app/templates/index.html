@@ -5,6 +5,11 @@
 
 {% block content%}
 <main>
+    <form action="/upload" enctype="multipart/form-data" method="post">
+        <h3>Upload file</h3>
+        <input type="file" name="file" id="file">
+        <button type="submit">Submit</button>
+    </form>
     <h2>Total score: </h2>
     {% for stat in stats %}
         {% if stat.number_of_occurence > 0 %}

@@ -23,6 +23,7 @@ pycryptodome==3.17
 pydantic==1.10.7
 pyevmasm==0.2.3
 pysha3==1.0.2
+python-multipart
 PyYAML==6.0
 rlp==3.0.0
 slither-analyzer==0.8.1

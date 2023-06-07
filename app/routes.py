@@ -1,6 +1,7 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from starlette.responses import RedirectResponse
 from jinja2 import Environment, FileSystemLoader
 
 import pickle, os
@@ -33,8 +34,9 @@ def get_navbar(item_name: str):
 router = APIRouter()
 
 parent_dir_path = os.path.dirname(os.path.realpath(__file__))
+temp_dir = os.path.join(parent_dir_path, 'temp')
 templates = Jinja2Templates(directory=parent_dir_path+"/templates")
-temporary = Jinja2Templates(directory=parent_dir_path+"/temp")
+temporary = Jinja2Templates(directory=temp_dir)
 
 
 @router.get("/", response_class=HTMLResponse)
@@ -95,3 +97,22 @@ async def symbolic_exec_get(request: Request):
 @router.get("/info", response_class=HTMLResponse)
 async def info_get(request: Request):
     return templates.TemplateResponse("info.html", {"request": request, "nav_bar": get_navbar('Info')})
+
+@router.post("/upload", response_class=HTMLResponse)
+async def upload(file: UploadFile):
+    try:
+        filename = file.filename
+        if filename.split('.')[-1] != 'sol':
+            print("Bad format")
+            return RedirectResponse(url='/', status_code=303) # zly format pliku
+
+        contents = file.file.read()
+        with open(os.path.join(temp_dir, file.filename), 'wb') as f:
+            f.write(contents)
+    except Exception as e:
+        print(e)
+        return RedirectResponse(url='/', status_code=303) # blad przy zapisywaniu pliku
+    finally:
+        file.file.close()
+
+    return RedirectResponse(url='/', status_code=303) # wszystko dobrze, proceduj z analiza
