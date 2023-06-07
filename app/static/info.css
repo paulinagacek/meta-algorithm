@@ -1,16 +1,27 @@
-article{
+article {
     max-width: 600px;
     margin-left: 10%;
 }
 
-li{
+li {
     margin-inline: 10%;
 }
 
-h3.tool{
+h3.tool {
     margin-block: 16px;
 }
 
-main-content{
+main-content {
     padding-block: 64px;
+}
+
+section.article-section {
+    opacity: 0;
+    transform: translateX(150px);
+    transition: 300ms ease-in-out;
+}
+
+section.article-section.show {
+    opacity: 1;
+    transform: translateX(0);
 }

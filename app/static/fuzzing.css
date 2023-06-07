@@ -12,14 +12,15 @@ code {
     background-color: white !important;
 }
 
-.toggle-list{
+.toggle-list {
     border-radius: 16px;
     padding-inline: 2rem;
     margin-bottom: 16px;
     background-color: var(--light-purle);
+    max-width: 1000px;
 }
 
-.toggle-header{
+.toggle-header {
     padding-block: 0.75rem;
     border-radius: 16px;
 
@@ -35,11 +36,11 @@ code {
     gap: 1rem;
 }
 
-.toggle-header:has(input:checked) +.hidden-content{
+.toggle-header:has(input:checked)+.hidden-content {
     display: block;
 }
 
-.toggle-header:not(:has(input:checked)) +.hidden-content{
+.toggle-header:not(:has(input:checked))+.hidden-content {
     display: none;
 }
 
@@ -52,14 +53,31 @@ code {
     font-weight: 600;
 }
 
-.toggle-header:has(input:checked)>label>span:before{
+.toggle-header:has(input:checked)>label>span:before {
     content: "expand_less";
 }
 
-.toggle-header:not(:has(input:checked))>label>span:before{
+.toggle-header:not(:has(input:checked))>label>span:before {
     content: "expand_more";
 }
 
-.hidden-content{
+.hidden-content {
     padding-block: 16px;
+}
+
+.fuzzing-summary {
+    padding-bottom: 16px;
+    display: flex;
+    gap: 16px;
+}
+
+.toggle-list {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: 300ms ease-in-out;
+}
+
+.toggle-list.show {
+    opacity: 1;
+    transform: translateX(0);
 }

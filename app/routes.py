@@ -55,7 +55,11 @@ async def home_get(request: Request):
         Stats("Vulnerabilities dettected by slither", len(vulnerabilities))
     }
 
-    return templates.TemplateResponse("index.html", {"request": request, "nav_bar": get_navbar('Home'), "stats": stats, "vur_stats": vur_stats})
+    echidna_stats = {}
+    with open(parent_dir_path + '/temp/echidna_stats.pickle', 'rb') as handle:
+        echidna_stats = pickle.load(handle)
+
+    return templates.TemplateResponse("index.html", {"request": request, "nav_bar": get_navbar('Home'), "stats": stats, "vur_stats": vur_stats, "echidna_stats": echidna_stats})
 
 @router.get("/warnings", response_class=HTMLResponse)
 async def warnings_get(request: Request):
@@ -92,7 +96,11 @@ async def symbolic_exec_get(request: Request):
     
     with open(parent_dir_path + '/temp/code_coverage.pickle', 'rb') as handle:
         code_coverage = pickle.load(handle)
-    return templates.TemplateResponse("echidna.html", {"request": request, "nav_bar": get_navbar('Fuzzing'), "fuzzing_log": fuzzing_log, "code_coverage": code_coverage})
+    
+    with open(parent_dir_path + '/temp/echidna_stats.pickle', 'rb') as handle:
+        stats = pickle.load(handle)
+
+    return templates.TemplateResponse("echidna.html", {"request": request, "nav_bar": get_navbar('Fuzzing'), "fuzzing_log": fuzzing_log, "code_coverage": code_coverage,  "echidna_stats": stats})
 
 @router.get("/info", response_class=HTMLResponse)
 async def info_get(request: Request):
