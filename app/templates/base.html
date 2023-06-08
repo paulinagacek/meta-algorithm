@@ -20,11 +20,13 @@
         <h1>Meta analysis</h1>
         <nav>
             {% for item in nav_bar %}
+                {% if not item.file_required or file_name %}
                 <a href="{{item.endpoint}}" class="navbar-item  {% if item.isSelected %} selected {% endif %}">
                     <h3 class="material-symbols-outlined icon">{{item.emoji}}
                     </h3>
                     <h3>{{item.name}}</h3>
                 </a>
+                {% endif %}
             {% endfor %}
         </nav>
         <!-- <div class = 'toggle-switch'>

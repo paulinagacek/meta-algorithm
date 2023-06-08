@@ -6,10 +6,12 @@
 {% block content%}
 <main>
     <form action="/upload" enctype="multipart/form-data" method="post">
-        <h3>Upload file</h3>
+        <h3>Upload {% if file_name %}different{% endif %} file</h3>
         <input type="file" name="file" id="file">
         <button type="submit">Submit</button>
     </form>
+    {% if file_name %}
+    <h2>File analysed: <i>{{file_name}}</i></h2>
     <h2>Total score: </h2>
     {% for stat in stats %}
         {% if stat.number_of_occurence > 0 %}
@@ -23,5 +25,6 @@
     <h2>Echidna test results</h2>
     <h4>Passing: {{ echidna_stats.passing_nr }}</h4>
     <h4>Failed: {{ echidna_stats.failed_nr }}</h4>
+    {% endif %}
 </main>
 {% endblock content %}
