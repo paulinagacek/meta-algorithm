@@ -101,8 +101,11 @@ async def symbolic_exec_get(request: Request):
 
     with open(parent_dir_path + '/temp/manticore_tests.pickle', 'rb') as handle:
         manticore_tests = pickle.load(handle)
+    
+    with open(parent_dir_path + '/temp/manticore_log.pickle', 'rb') as handle:
+        manticore_log = pickle.load(handle)
 
-    return templates.TemplateResponse("symbolic_execution.html", {"request": request, "nav_bar": get_navbar('Symbolic Execution'), "file_name": get_analysed_filename(), "manticore_tests": manticore_tests})
+    return templates.TemplateResponse("symbolic_execution.html", {"request": request, "nav_bar": get_navbar('Symbolic Execution'), "file_name": get_analysed_filename(), "manticore_tests": manticore_tests, "manticore_log": manticore_log})
 
 @router.get("/fuzzing", response_class=HTMLResponse)
 async def symbolic_exec_get(request: Request):
