@@ -4,6 +4,8 @@ from os.path import isfile, join
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 parent_dir_path = os.path.dirname(os.path.realpath(__file__))
+temp_dir = join(parent_dir_path, 'temp')
+
 def count_test_score(fuzzing_log: str):
     passing = len(re.findall(': passing', fuzzing_log))
     failed = len(re.findall(': failed', fuzzing_log))
@@ -12,7 +14,6 @@ def count_test_score(fuzzing_log: str):
 
 
 def analyse_echidna(file_name):
-    temp_dir = join(parent_dir_path, 'temp')
     if not os.path.exists(temp_dir):
         os.mkdir(temp_dir)
     echidna_dir = join(temp_dir, 'echidna')

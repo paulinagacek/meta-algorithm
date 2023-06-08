@@ -1,50 +1,53 @@
 {% extends 'base.html' %}
 {% block style %}
-<link rel="stylesheet" href="/static/info.css">
+<link rel="stylesheet" href="/static/symbolic_exec.css">
 {% endblock %}
 {% block content%}
 <main>
-    <h2>Will be ready soon.</h2>
-    <p>manticore-verifier example_contracts/echidna2.sol --propre 'echidna'</p>
+    <h2 class="sticky-h2">Symbolic execution with <a href="https://github.com/trailofbits/manticore">manticore</a></h2>
+    {% if manticore_tests|length >= 1 %}
+    <section class="tests-wrapper">
+        {% for test in manticore_tests %}
+        <div class="single-test-wrapper {% if test[1]=='passed'%}passed{% endif %}">
+            <h4> {{ test[0] }} </h4>
+            <h4> {{ test[1] }} </h4>
+        </div>
+        {% endfor %}
+    </section>
+
+    {% else %}
+    <h4>There were no tests provided <span class="material-symbols-outlined">
+            sentiment_dissatisfied
+        </span>
+    </h4>
+    <h4>You should write some quickly!</h4>
+    {% endif %}
+    <!-- <p>manticore-verifier example_contracts/echidna2.sol --propre 'echidna'</p>
     <p>
         To do:
     </p>
-    <ul>
-        <li>catch stdout and process it - for tests you can set timeout to --timeout 60 (seconds)</li>
-        <li>make always false test</li>
-        <li>regex</li>
-        <li>
-            <code>
-                # Welcome to manticore-verifier
-                # Owner account: 0xcf8f4587369473b1faf223777ed30d7555e3a4e7
-                # Contract account: 0x1a6d50b513827c68f12e75b418f24a573b6e37c6
-                # Sender_0 account: 0x241a0d9141e9e1a19d845cc5ec944d0888d0d7ef
-                # PSender account: 0xaec67f73d49668836ecb920dcb63d4a620854664
-                # Found 3 properties: echidna_alwaystrue, echidna_revert_always, echidna_sometimesfalse
-                # Exploration will stop when some of the following happens:
-                # * 3 human transaction sent
-                # * Code coverage is greater than 100% meassured on target contract
-                # * No more coverage was gained in the last transaction
-                # * At least 3 different properties where found to be breakable. (1 for fail fast)
-                # * 300 seconds pass
-                # Starting exploration...
-                Transactions done: 0. States: 1, RT Coverage: 0.0%, Failing properties: 0/3
-                Transactions done: 1. States: 4, RT Coverage: 61.03%, Failing properties: 0/3
-                2023-06-07 21:54:08,632: [7049] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
-                Cancelled or timeout.
-                Exploration ended by CTRL+C or timeout
-                Coverage obtained 0.00%. (RT + prop)
-                +------------------------+--------+
-                |     Property Named     | Status |
-                +------------------------+--------+
-                |   echidna_alwaystrue   | passed |
-                | echidna_revert_always  | passed |
-                | echidna_sometimesfalse | passed |
-                +------------------------+--------+
-                Checkout testcases here:./mcore_gwaatv82
-            </code>
-        </li>
-        <li>delete generated folder</li>
-    </ul>
+        <li>delete generated folder</li> -->
 </main>
+<script>
+    const cards = document.querySelectorAll(".single-test-wrapper");
+    console.log('cards', cards);
+
+    const observer = new IntersectionObserver(
+        entries => {
+        entries.forEach(entry => {
+            entry.target.classList.toggle("show", entry.isIntersecting);
+            if (entry.isIntersecting){
+                observer.unobserve(entry.target);
+            }
+        }, 
+        {
+            threshold: 1,
+            rootMargin: "-200px",
+        })
+    });
+
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+</script>
 {% endblock content %}
